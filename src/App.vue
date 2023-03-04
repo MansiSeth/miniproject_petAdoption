@@ -1,32 +1,33 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div class="home">
+    <navbar/>
+    
+    <productCard :product="product" />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
-}
+import productCard from './components/productCard.vue';
+import navbar from './components/navbar.vue';
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: 'HomeView',
+  components: {
+    productCard,
+    navbar
+  },
+
+data() {
+    return {
+      product: {
+        name: "Example Product",
+        description: "This is an example product description.",
+        image: "https://via.placeholder.com/300x200",
+        price: "$9.99"
+      }
+    };
+  }
+};
+</script>
