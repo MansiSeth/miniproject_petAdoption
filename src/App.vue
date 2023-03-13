@@ -1,8 +1,12 @@
 <template>
   <div class="home">
     <navbar/>
+
+    <searchbar-vue/>
     
     <productCard :product="product" />
+
+    
   </div>
 </template>
 
@@ -10,13 +14,15 @@
 
 import productCard from './components/productCard.vue';
 import navbar from './components/navbar.vue';
+import searchbarVue from './components/searchBar.vue';
 
 
 export default {
   name: 'HomeView',
   components: {
     productCard,
-    navbar
+    navbar,
+    searchbarVue
   },
 
 data() {
