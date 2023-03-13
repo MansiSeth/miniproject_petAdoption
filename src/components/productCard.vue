@@ -39,7 +39,7 @@ import componentButton from '../components/componentButton.vue';
     },
     data() {
           return {
-              quantity: 1
+              quantity: 0
           };
       },
       methods: {
