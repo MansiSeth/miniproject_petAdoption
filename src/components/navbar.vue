@@ -37,6 +37,7 @@ export default {
   
 }
 
+
 .navbar-logo img {
   height: 40px;
   margin-right: 10px;

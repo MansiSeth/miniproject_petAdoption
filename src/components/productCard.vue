@@ -59,6 +59,7 @@ import componentButton from '../components/componentButton.vue';
 <style>
   .product-card {
     display: flex;
+    width: 300px;
     flex-direction: column;
     justify-content: space-between;
     background-color: #FFE7C2;
