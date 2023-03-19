@@ -1,39 +1,29 @@
 <template>
-  <div class="home">
-    <navbar/>
+<div>
+  
 
-    <searchbar-vue/>
-    
-    <productCard :product="product" />
+  <my-navbar></my-navbar>
+  <my-footer></my-footer>
 
-    
-  </div>
+</div>
 </template>
 
 <script>
+import MyFooter from './components/MyFooter.vue';
+import MyNavbar from './components/MyNavbar.vue';
+import productCard from './components/MyProductCard.vue';
 
-import productCard from './components/productCard.vue';
-import navbar from './components/navbar.vue';
-import searchbarVue from './components/searchBar.vue';
+
+
 
 
 export default {
-  name: 'HomeView',
-  components: {
-    productCard,
-    navbar,
-    searchbarVue
-  },
+  name: 'App',
 
-data() {
-    return {
-      product: {
-        name: "Example Product",
-        description: "This is an example product description.",
-        image: "https://via.placeholder.com/300x200",
-        price: "$9.99"
-      }
-    };
-  }
+  components: {productCard, MyNavbar, MyFooter},
+
+  data: () => ({
+    //
+  }),
 };
 </script>

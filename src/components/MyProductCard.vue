@@ -27,7 +27,7 @@
   
   
 <script>
-import componentButton from '../components/componentButton.vue';
+import componentButton from './componentButton.vue';
 
   export default {
     name: "productCard",

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import componentButton from "@/components/componentButton.vue";
-import productCard from "@/components/productCard.vue"
+import productCard from "@/components/MyProductCard.vue"
 
 
 
