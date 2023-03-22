@@ -40,7 +40,7 @@
   </template>
   
   <script>
-  import MyFooter from '../components/myFooter.vue';
+  import MyFooter from '../components/MyFooter.vue';
   import MyNavbar from '../components/MyNavbar.vue';
   import ProductCard from '../components/MyProductCard.vue';
   
