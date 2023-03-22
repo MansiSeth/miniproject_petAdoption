@@ -40,9 +40,9 @@
   </template>
   
   <script>
-  import MyFooter from './components/MyFooter.vue';
-  import MyNavbar from './components/MyNavbar.vue';
-  import ProductCard from './components/MyProductCard.vue';
+  import MyFooter from '../components/myFooter.vue';
+  import MyNavbar from '../components/MyNavbar.vue';
+  import ProductCard from '../components/MyProductCard.vue';
   
   export default {
     name: 'WebsiteContent',
@@ -57,9 +57,17 @@
           { name: 'Product 1', price: 10 },
           { name: 'Product 2', price: 20 },
           { name: 'Product 3', price: 30 },
+          { name: 'Product 4', price: 10 },
+          { name: 'Product 5', price: 20 },
+          { name: 'Product 6', price: 30 },
+          { name: 'Product 7', price: 30 },
+          { name: 'Product 8', price: 10 },
+          { name: 'Product 9', price: 20 },
+          { name: 'Product 10', price: 30 },
         ],
       };
     },
+    
   };
   </script>
   
@@ -132,5 +140,11 @@
   .website-content-text6 {
     font-weight: 700;
   }
-  
+  .product-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
   </style>
