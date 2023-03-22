@@ -2,10 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 
-import inventory from '../views/inventory.vue'
-import componentButton from "@/components/componentButton.vue";
+import inventory from '../views/Inventory.vue'
+import shop from  "@/views/Shop.vue";
 
-import Shop from  "@/views/Shop.vue";
+import newinventory from '../views/Inventory.vue'
 
 
 
@@ -18,19 +18,14 @@ const routes = [
     
   },
   {
-    path: '/shop',
-    name: 'shop',
-    component: shop
-  },
-  {
     path: '/inventory',
     name: 'inventory',
     component: inventory
-  }
+  },
   {
     path: '/shop',
     name:'shop',
-    component: Shop
+    component: shop
   },
  
 

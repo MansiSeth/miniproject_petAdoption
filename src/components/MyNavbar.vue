@@ -20,7 +20,7 @@
 
 <script>
 
-import componentButton from './componentButton.vue';
+import componentButton from './MyButton.vue';
 
 export default {
   name: "navbar",
