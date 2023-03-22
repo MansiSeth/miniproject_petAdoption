@@ -1,20 +1,23 @@
 <template>
-  <div class="home">
-    <navbar/>
+<div>
+  
 
-    <searchbar-vue/>
-    
-    <productCard :product="product" />
+  <my-navbar></my-navbar>
 
-    
-  </div>
+  <router-view></router-view>
+  
+  
+
+</div>
 </template>
 
 <script>
 
-import productCard from './components/productCard.vue';
-import navbar from './components/navbar.vue';
-import searchbarVue from './components/searchBar.vue';
+import MyNavbar from './components/MyNavbar.vue';
+
+
+
+
 
 
 export default {
@@ -25,15 +28,10 @@ export default {
     searchbarVue
   },
 
-data() {
-    return {
-      product: {
-        name: "Example Product",
-        description: "This is an example product description.",
-        image: "https://via.placeholder.com/300x200",
-        price: "$9.99"
-      }
-    };
-  }
+  components: {MyNavbar},
+
+  data: () => ({
+    //
+  }),
 };
 </script>

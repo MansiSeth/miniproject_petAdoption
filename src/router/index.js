@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import componentButton from "@/components/componentButton.vue";
-import productCard from "@/components/productCard.vue"
+
+import shop from '../views/shop.vue'
+import inventory from '../views/inventory.vue'
 
 
 
@@ -14,20 +15,17 @@ const routes = [
     
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: '/shop',
+    name: 'shop',
+    component: shop
   },
   {
-    path: '/tester',
-    component: productCard
+    path: '/inventory',
+    name: 'inventory',
+    component: inventory
   },
-  {
-    path: '/tester',
-    component: componentButton
-  }
+ 
+
   
 ]
 
