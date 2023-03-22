@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import componentButton from "@/components/componentButton.vue";
-import productCard from "@/components/MyProductCard.vue"
+// import productCard from "@/components/MyProductCard.vue";
+import Shop from  "@/views/Shop.vue";
 
 
 
@@ -21,8 +22,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
   },
   {
-    path: '/tester',
-    component: productCard
+    path: '/shop',
+    name:'shop',
+    component: Shop
   },
   {
     path: '/tester',

@@ -47,7 +47,7 @@ import componentButton from './componentButton.vue';
               this.quantity++;
           },
           decrementQuantity() {
-              if (this.quantity > 1) {
+              if (this.quantity >= 1) {
                   this.quantity--;
               }
           }
