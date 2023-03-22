@@ -27,7 +27,7 @@
   
   
 <script>
-import componentButton from '../components/componentButton.vue';
+import componentButton from './componentButton.vue';
 
   export default {
     name: "productCard",
@@ -47,7 +47,7 @@ import componentButton from '../components/componentButton.vue';
               this.quantity++;
           },
           decrementQuantity() {
-              if (this.quantity > 1) {
+              if (this.quantity >= 1) {
                   this.quantity--;
               }
           }

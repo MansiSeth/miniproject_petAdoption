@@ -1,19 +1,17 @@
 <template>
 <div>
   
-
+ <router-view></router-view>
   <my-navbar></my-navbar>
-
-  <router-view></router-view>
-  
-  
+  <my-footer></my-footer>
 
 </div>
 </template>
 
 <script>
-
+import MyFooter from './components/myFooter.vue';
 import MyNavbar from './components/MyNavbar.vue';
+import productCard from './components/MyProductCard.vue';
 
 
 
@@ -21,14 +19,9 @@ import MyNavbar from './components/MyNavbar.vue';
 
 
 export default {
-  name: 'HomeView',
-  components: {
-    productCard,
-    navbar,
-    searchbarVue
-  },
+  name: 'App',
 
-  components: {MyNavbar},
+  components: {productCard, MyNavbar, MyFooter},
 
   data: () => ({
     //
