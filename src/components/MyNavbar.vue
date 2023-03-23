@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="navbar-logo">
-      <img src="@/assets/logo.png" alt="Logo">
+      <img src="@/assets/logo.png" alt="Logo" />
       <h1 class="navbar-company-name">Tail-or Made</h1>
     </div>
     <ul class="navbar-links">
@@ -9,18 +9,27 @@
       <li><router-link to="/shop">Shop</router-link></li>
       <li><router-link to="/donate">Donate</router-link></li>
       <li><router-link to="/blog">Blog</router-link></li>
+      <li><router-link to="/inventory">Inventory</router-link></li>
     </ul>
-    
-    <Button class="logIn">Login</button>
-    
-  </nav>
 
-  
+   
+
+    <button class="LogIn">
+    <v-list-item two-line>
+      <v-list-item-avatar>
+        <img src="https://randomuser.me/api/portraits/women/81.jpg" />
+      </v-list-item-avatar>
+
+      <v-list-item-content>
+        <v-list-item-title>Jane Smith</v-list-item-title>
+        <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    </button>
+  </nav>
 </template>
 
 <script>
-
-import componentButton from './MyButton.vue';
 
 export default {
   name: "navbar",
@@ -34,9 +43,7 @@ export default {
   align-items: center;
   padding: 10px;
   background-color: #fff;
-  
 }
-
 
 .navbar-logo img {
   height: 40px;
@@ -46,7 +53,7 @@ export default {
 .navbar-company-name {
   font-size: 24px;
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .navbar-links {
@@ -67,32 +74,29 @@ export default {
 .navbar-links li a {
   text-decoration: none;
   color: #333;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .navbar-links li a:hover {
-  color:#FFBD59;
+  color: #ffbd59;
 }
 
-.logIn {
+.LogIn {
   background: #FFBD59;
-  background-image: -webkit-linear-gradient(top, #FFBD59, #e6bb7a);
-  background-image: -moz-linear-gradient(top, #FFBD59, #e6bb7a);
-  background-image: -ms-linear-gradient(top, #FFBD59, #e6bb7a);
-  background-image: -o-linear-gradient(top, #FFBD59, #e6bb7a);
-  background-image: linear-gradient(to bottom, #FFBD59, #e6bb7a);
-  -webkit-border-radius: 20;
-  -moz-border-radius: 20;
-  border-radius: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
-  color: black;
-  font-size: 13px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  border-width: 0;
+    background-image: linear-gradient(to bottom, #FFBD59, #e6bb7a);
+    border-radius: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    width: auto;
+    height: 66px;
 }
 
-.logIn:hover {
+.LogIn:hover {
   background: #e0aa5a;
   background-image: -webkit-linear-gradient(top, #e0aa5a, #f5b55a);
   background-image: -moz-linear-gradient(top, #e0aa5a, #f5b55a);
