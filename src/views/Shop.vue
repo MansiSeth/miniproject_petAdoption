@@ -3,7 +3,6 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-      <my-navbar></my-navbar>
       <div class="content">
         <div class="website-content-website-content">
           <span class="website-content-text">
@@ -35,7 +34,6 @@
           <product-card :product="product"></product-card>
         </div>
       </div>
-      <my-footer></my-footer>
     </div>
   </template>
   
