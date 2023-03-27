@@ -30,6 +30,9 @@
           </span>
         </div>
       </div>
+      <div class="MySearchBar">
+        <my-search-bar></my-search-bar>
+        </div>
       <div class="product-cards">
         <div v-for="product in products" :key="product.name">
           <product-card :product="product"></product-card>
@@ -43,11 +46,12 @@
   import MyFooter from '../components/myFooter.vue';
   import MyNavbar from '../components/MyNavbar.vue';
   import ProductCard from '../components/MyProductCard.vue';
+import MySearchBar from '@/components/MySearchBar.vue';
   
   export default {
     name: 'WebsiteContent',
   
-    components: { MyNavbar, MyFooter, ProductCard },
+    components: { MyNavbar, MyFooter, ProductCard, MySearchBar },
   
     data() {
       return {
@@ -145,6 +149,11 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+
+}
+.MySearchBar{
+  margin: 20px;
+
 }
 
   </style>

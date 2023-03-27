@@ -1,7 +1,9 @@
 <template>
 <div class="product-card">
   <div class="product-image">
-    <div class="product-image" :style="{ backgroundImage: 'url(' + product.image + ')' }"></div>
+    <div class="product-image" :style="{ backgroundImage: 'url(' + product.image + ')' }">
+    <img src="../assets/dogbone.jpg" alt="dogboneimg">
+    </div>
   </div>
 
   <div class="product-info">
