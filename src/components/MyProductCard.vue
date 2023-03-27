@@ -29,7 +29,7 @@
   
   
 <script>
-import componentButton from './componentButton.vue';
+import componentButton from './MyButton.vue';
 
   export default {
     name: "productCard",
@@ -61,6 +61,7 @@ import componentButton from './componentButton.vue';
 <style>
   .product-card {
     display: flex;
+    width: 300px;
     flex-direction: column;
     justify-content: space-between;
     background-color: #FFE7C2;

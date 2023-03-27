@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MyFooter from './components/myFooter.vue';
+import MyFooter from './components/MyFooter.vue';
 import MyNavbar from './components/MyNavbar.vue';
 import productCard from './components/MyProductCard.vue';
 
