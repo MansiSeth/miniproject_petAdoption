@@ -4,8 +4,7 @@ import VueRouter from 'vue-router';
 
 import inventory from '../views/Inventory.vue'
 import shop from  "@/views/Shop.vue";
-
-import newinventory from '../views/Inventory.vue'
+import MyEditInventoryCard from "@/components/MyEditInventoryCard.vue"
 
 
 
@@ -27,6 +26,13 @@ const routes = [
     name:'shop',
     component: shop
   },
+  {
+    path: '/inventory/:id',
+    name: 'EditProduct',
+    component: MyEditInventoryCard,
+    props: true,
+  }
+  
  
 
   

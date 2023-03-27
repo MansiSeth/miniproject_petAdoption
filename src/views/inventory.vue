@@ -1,71 +1,66 @@
 <template>
-  <div>
-    <div class="content">
-        <div class="website-content-website-content">
-          <span class="website-content-text">
-            <span class="website-content-text1">
-             My<span class="website-content-text2">Store</span>
-            </span>
-          </span>
-          <span class="website-content-text4">
-            <span class="website-content-text5">
-              Looking for the best deals on pet products? Look no further! Our online
-              pet store has a wide selection of high-quality products for all your
-              furry friend&apos;s needs. From premium food to fun toys to grooming
-              essentials, we have it all at
-              <span></span>
-            </span>
-            <span class="website-content-text6">unbeatable prices</span>
-            <span>
-              . Don&apos;t miss out on our great deals and shop now for your
-              pet&apos;s happiness and yours!
-            </span>
-          </span>
-        </div>
-      </div>
+  <div class="inventory-page">
+    <h2 class="page-title">My<span class="yellow-text">Store</span></h2>
 
-      
-<my-inventory-card></my-inventory-card>
-
+    <div class="inventory-list">
+      <MyInventoryCard
+        v-for="product in products"
+        :key="product.p_id"
+        :product="product"
+      />
+      <button class="AddButton">+</button>
+    </div>
+    
   </div>
-
 </template>
 
 <script>
-import MyInventoryCard from "@/components/MyInventoryCard.vue";
+import MyInventoryCard from "../components/MyInventoryCard.vue";
+import productsData from "../data/Inventory.json";
 
 export default {
-  components: { MyInventoryCard },
+  components: {
+    MyInventoryCard,
+  },
+  data() {
+    return {
+      products: productsData,
+    };
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-.main-heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-heading-yellow {
-  font-family: "Inter", sans-serif;
-  color: #ffbd59;
-}
-.main-heading-black {
-  font-family: "Inter", sans-serif;
-}
-.description {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
+<style>
+.inventory-page {
   margin: 0 auto;
-  font-family: "Inter", sans-serif;
+  padding: 20px;
+}
+
+.page-title {
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: bold;
   text-align: center;
 }
 
-.cards {
+.inventory-list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+.yellow-text {
+  color: rgba(255, 189, 89, 1);
+}
+.AddButton {
+    background-color:#ffe7c2;
+    border-radius: 30px;
+    width: 300px;
+    height: 425px;
+    font-size: 24px;
+    margin-top: 20px;
+    font-size:50px ;
+    border: 2px solid;
+    
+  }
 </style>

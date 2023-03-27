@@ -39,11 +39,6 @@
       </v-card-text>
     </v-card>
   </v-footer>
-    
-
-    <v-main>
-      <router-view/>
-    </v-main>
   </v-app>
 
 
@@ -72,3 +67,4 @@ import App from '@/App.vue'
 <style lang="scss" scoped>
 
 </style>
+
