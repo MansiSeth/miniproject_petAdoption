@@ -1,14 +1,15 @@
 <template>
 <div>
-  
- <router-view></router-view>
   <my-navbar></my-navbar>
+ <router-view></router-view>
+  
   <my-footer></my-footer>
 
 </div>
 </template>
 
 <script>
+
 import MyFooter from './components/MyFooter.vue';
 import MyNavbar from './components/MyNavbar.vue';
 import productCard from './components/MyProductCard.vue';
@@ -28,3 +29,8 @@ export default {
   }),
 };
 </script>
+
+
+<style>
+@import url('@/assets/styles.css');
+</style>
