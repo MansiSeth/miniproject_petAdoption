@@ -1,55 +1,41 @@
 <template>
   <div>
-    <navbar-vue></navbar-vue>
-    <div>
-      <div>
-        <div class="main-heading">
-          <div>
-            <h1 class="main-heading-yellow">My</h1>
-          </div>
-          <div>
-            <h1 class="main-heading-black">Store</h1>
-          </div>
+    <div class="content">
+        <div class="website-content-website-content">
+          <span class="website-content-text">
+            <span class="website-content-text1">
+             My<span class="website-content-text2">Store</span>
+            </span>
+          </span>
+          <span class="website-content-text4">
+            <span class="website-content-text5">
+              Looking for the best deals on pet products? Look no further! Our online
+              pet store has a wide selection of high-quality products for all your
+              furry friend&apos;s needs. From premium food to fun toys to grooming
+              essentials, we have it all at
+              <span></span>
+            </span>
+            <span class="website-content-text6">unbeatable prices</span>
+            <span>
+              . Don&apos;t miss out on our great deals and shop now for your
+              pet&apos;s happiness and yours!
+            </span>
+          </span>
         </div>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="icon" type="image/x-icon" href="public\favicon.ico" />
       </div>
 
-      <div class="description">
-        <p>
-          Check out our pet adoption blog for helpful tips and inspiration on
-          finding your furry best friend. From breed information to adoption
-          stories, we've got everything you need to make the perfect match.
-          Follow us for regular updates and join the conversation on pet
-          adoption today
-        </p>
-      </div>
+      
+<my-inventory-card></my-inventory-card>
 
-      <div class="cards">
-        <my-inventory-card></my-inventory-card>
-     
-      </div>
-      <div class="cards">
-        <my-inventory-card></my-inventory-card>
-     
-      </div>
-    </div>
-    <my-footer />
   </div>
+
 </template>
 
 <script>
-import MyFooter from "@/components/MyFooter.vue";
-import MyNavbar from "@/components/MyNavbar.vue";
 import MyInventoryCard from "@/components/MyInventoryCard.vue";
 
 export default {
-  components: { MyNavbar, MyFooter, MyInventoryCard },
+  components: { MyInventoryCard },
 };
 </script>
 
