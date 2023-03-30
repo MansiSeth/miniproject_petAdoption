@@ -7,7 +7,7 @@
     color="#FFBD59"
     dark
     padless
-    
+    class="sticky-footer"
   >
     <v-card
       flat
@@ -65,6 +65,9 @@ import App from '@/App.vue'
 </script>
 
 <style lang="scss" scoped>
-
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 </style>
-
