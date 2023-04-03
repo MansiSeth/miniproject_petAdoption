@@ -13,8 +13,7 @@
     <div class="button_pos">
       <button class="standardButton"
         @click="
-          $router.push({ name: 'EditProduct', params: { id: product.p_id } })
-        "
+          $router.push({ name: 'EditInventory', params: { id: product.p_id } })"
       >Edit</button>
     </div>
   </div>
