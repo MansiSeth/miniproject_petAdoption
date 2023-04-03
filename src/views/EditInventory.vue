@@ -17,7 +17,7 @@
         <div class="buttons_bar">
             <button class="standardButton">Save</button>
             <button class="standardButton">Delete</button>
-            <button class="standardButton">Cancel</button>
+            <button class="standardButton" @click="$router.push('/inventory')">Cancel</button>
         </div>
 
     </div>
@@ -37,7 +37,7 @@ export default {
 
     mounted() {
         this.init()
-        console.log("in mounted");
+       
 
     },
 
