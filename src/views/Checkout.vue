@@ -17,11 +17,10 @@
             "
           >
             <input type="radio"
-  :value="'Address' + (index + 1) "
-  
-  :checked="selectedAddress === index"
-  @change="selectAddress(index)"
-><h3>Address {{ index + 1 }}</h3>
+              :value="'Address' + (index + 1) "
+              :checked="selectedAddress === index"
+              @change="selectAddress(index)"
+            ><h3>Address {{ index + 1 }}</h3>
             <div>
               <p>{{ fullAddress(index) }}</p>
               <v-btn @click="editAddress(index)" style="margin-right: 10px"
@@ -42,8 +41,8 @@
                 v-model="addressInputs[index]"
                 label="Address"
               ></v-text-field>
-              <v-btn @click="saveAddress(index)">Save</v-btn>
-              <v-btn @click="cancelEdit(index)">Cancel</v-btn>
+              <v-btn @click="saveAddress(index); editMode[index] = false">Save</v-btn>
+              <v-btn @click="cancelEdit(index); editMode[index] = false">Cancel</v-btn>
             </div>
           </div>
           <v-btn @click="addAddress">Add Address</v-btn>
@@ -85,7 +84,7 @@ export default {
     return {
       panel: [0, 1],
       addresses: ['123 Main St.', '456 Maple Ave.'],
-      selectedAddress:-1,
+      selectedAddress: -1,
       editMode: [false, false],
       nameInputs: [''],
       zipcodeInputs: [''],
@@ -104,13 +103,12 @@ export default {
       this.editMode[index] = true
     },
     saveAddress (index) {
-      this.nameInputs[index] = this.nameInputs[index]
-      this.zipcodeInputs[index] = this.zipcodeInputs[index]
-      this.addressInputs[index] = this.addressInputs[index]
-      this.editMode[index] = false // set editMode to false
+      this.editMode[index] = false
+      this.selectedAddress = -1
     },
     cancelEdit (index) {
-      this.editMode[index] = false // set editMode to false
+      this.editMode[index] = false
+      this.selectedAddress = -1
     },
     addAddress () {
       this.addresses.push('')
@@ -121,10 +119,8 @@ export default {
     }
   }
 }
+
 </script>
-
-
-
 
 
 
