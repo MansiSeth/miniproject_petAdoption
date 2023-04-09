@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     fullAddress (index) {
-      return `${this.addressInputs[index]}, ${this.zipcodeInputs[index]} ${this.nameInputs[index]}`
+      return `${this.nameInputs[index]},${this.addressInputs[index]}, ${this.zipcodeInputs[index]} `
     },
     selectAddress (index) {
       this.selectedAddress = index
@@ -107,9 +107,14 @@ export default {
       this.selectedAddress = -1
     },
     cancelEdit (index) {
-      this.editMode[index] = false
-      this.selectedAddress = -1
-    },
+     
+  this.editMode[index] = false
+  this.selectedAddress = -1
+  // Restore previous values
+  this.nameInputs[index] = this.addresses[index].name
+  this.zipcodeInputs[index] = this.addresses[index].zipcode
+  this.addressInputs[index] = this.addresses[index].address
+  },
     addAddress () {
       this.addresses.push('')
       this.editMode.push(true)
