@@ -1,38 +1,55 @@
 <template>
-  <div class="cart">
-    <div class="cart-items">
-      <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
-        <div class="cart-item-image">
-          <img src="item.image" :alt="item.p_name" class="product-image" />
+  <div class="CartButton">
+    <div class="cart-container">
+      <div class="cart-items">
+        <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
+          <div class="cart-item-image">
+            <img src="https://i.ibb.co/KjBPdgJ/inventory.png" :alt="item.p_name" class="product-image" />
+          </div>
+          <div class="cart-item-details">
+            <div class="cart-item-name">{{ item.p_name }}</div>
+            <div class="cart-item-quantity">
+              Quantity:
+              <button @click="incrementQuantity(item)">+</button>
+                {{ item.quantity }}
+              <button @click="decrementQuantity(item)">-</button>
+            </div>
+            <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
+          </div>
         </div>
-        <div class="cart-item-name">{{ item.p_name }}</div>
-        <div class="cart-item-quantity">
-          Quantity: {{ item.quantity }}
-          <button @click="incrementQuantity(item)">+</button>
-          <button @click="decrementQuantity(item)">-</button>
+      </div>
+      <div class="cart">
+        <div class="cart-summary">
+          <div>Subtotal: {{ formatPrice(subtotal) }}</div>
+          <div>Taxes: {{ formatPrice(taxes) }}</div>
+          <div>Total: {{ formatPrice(total) }}</div>
+          <button @click="gotocheckout" class="checkout"><span>Checkout</span></button>
         </div>
-        <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
       </div>
     </div>
-    <div class="cart-total">Total: {{ formatPrice(calculateTotalWithTaxes) }}</div>
   </div>
 </template>
 
 <script>
 export default {
+
   name: "MyCart",
   props: ["cartItems"],
   computed: {
-    calculateTotalWithTaxes() {
-      const subtotal = this.cartItems.reduce((total, item) => {
+    subtotal() {
+      return this.cartItems.reduce((total, item) => {
         if (typeof item.p_price === 'number' && typeof item.quantity === 'number') {
           return total + item.p_price * item.quantity;
         } else {
           return total;
         }
       }, 0);
-      const taxes = subtotal * 0.1;
-      return subtotal + taxes;
+    },
+    taxes() {
+      return this.subtotal * 0.1;
+    },
+    total() {
+      return this.subtotal + this.taxes;
     },
   },
   methods: {
@@ -49,70 +66,93 @@ export default {
     formatPrice(price) {
       return typeof price === 'number' ? `$${price.toFixed(2)}` : '';
     },
+    gotocheckout() {
+      this.$router.push({ name: "Checkout", props: { 
+        CartItems: this.cartItems,
+      } });
+    },
   },
 };
 </script>
 
-<style>
-.cart {
-  border: 3px solid #ddd;
-  padding: 16px;
-  border-radius: 4px;
-}
-.cart {
-  /* position: absolute; */
-  width: 712px;
-  height: 727px;
-  left: 79px;
-  top: 277px;
-  background: #FFE7C2;
-  border-radius: 15px;
+<style lang="scss" scoped>
+.cart-container {
+  display: flex;
 }
 
-.cart-item {
-  /* position: absolute; */
-  width: 631px;
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px; /* Increased width */
+  background-color: #FFE7C2;
+  border-radius: 10px;
+  padding: 16px;
+  margin-left: auto; /* Aligned to the right */
+}
+
+
+.checkout {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  background: #FFBD59;
+  padding: 20px 40px 20px 40px;
+  text-decoration: none;
+}
+.checkout:hover{
+  background: #fcec3c;
+  text-decoration: none;
+  
+}
+
+.cart-item{
+  display: flex;
+  background-color: #FFE7C2;
+}
+
+.cart-item-details {
+  
+  display:inline;
+  position: relative;
+   width: 450px;
   height: 138px;
   left: 118px;
-  top: 381px;
-  background: #FFFFFF;
-  border-radius: 20px;
+  top:50px;
+  
+  
 }
 
-.cart-items {
-  margin-bottom: 16px;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+.cart-item-name {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .cart-item-quantity {
   display: flex;
   align-items: center;
+  margin-top: 8px;
+  display:inline;
 }
 
 .cart-item-quantity button {
   margin-left: 8px;
+  display:inline;
 }
 
-.cart-total {
-  font-weight: bold;
+.cart-item-price {
+  margin-top: 8px;
   font-size: 18px;
+  font-weight: bold;
+  display:inline;
+}
+.cart-item-image{
+  margin-top: 8px;
+
 }
 
-.product-image {
-  width: 100px;
-  height: 100px;
-  
-  margin-right: 16px;
-}
-
-.cart-item-image {
-  display: flex;
-  align-items: center;
-}
 </style>
+

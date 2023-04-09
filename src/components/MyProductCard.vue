@@ -9,7 +9,9 @@
         <p class="product-price">{{ jsonproduct.p_price }}</p>
         <p class="product-description">{{ jsonproduct.p_desc }}</p>
         <div class="product-quantity">
-          <input type="number" v-model.number="quantity" min="0" step="1" class="product-quantity-input" />
+          <button @click="incrementQuantity" class="quantity-btn">+</button>
+          <span class="quantity">{{ quantity }}</span>
+          <button @click="decrementQuantity" class="quantity-btn">-</button>
         </div>
         <div class="add-to-cart">
           <button class="standardButton" @click="addtoCart()">Add to Cart</button>
@@ -57,66 +59,105 @@ export default {
 };
 </script>
 <style scoped>
+
 .inventory-card {
-  border: 1px solid #ddd;
-  padding: 0;
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px 20px 20px 20px;
+  border: 2px solid;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 425px;
+  margin: 20px;
+  background-color: #ffe7c2;
+  position: relative;
 }
-
-.product-image-wrapper {
-  width: 100%;
-  height: 200px;
+.product-quantity{
   display: flex;
-  justify-content: center;
+  background-color: azure;
+  width:90px;
+  height:30px;
   align-items: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  
+
+}
+.quantity-btn{
+  background-color:#FFBD59;
+  width:40px;
+  height:30px;
+  border-radius: 10px;
+}
+.product-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 30px 30px 0px 0px;
+  border-top: 0px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-left: 2px solid;
 }
 
-.product-image {
-  max-width: 100%;
-  max-height: 100%;
-}
 
 .product-name {
-  margin-top: 0;
-  margin-bottom: 8px;
+  margin: 0;
+}
+
+.product-id {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
 }
 
 .product-price {
-  margin: 0;
+  margin: 5px;
+  font-size: 18px;
   font-weight: bold;
+  color: #007aff;
 }
+.standardButton {
+    background: #FFBD59;
+    background-image: -webkit-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -moz-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -ms-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -o-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: linear-gradient(to bottom, #FFBD59, #e6bb7a);
+    -webkit-border-radius: 20;
+    -moz-border-radius: 20;
+    border-radius: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+    color: black;
+    font-size: 13px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    margin-left:100px;
+    position: relative;
+    bottom:40px;
+  }
+  
+  .standardButton:hover {
+    background: #e0aa5a;
+    background-image: -webkit-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -moz-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -ms-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -o-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: linear-gradient(to bottom, #e0aa5a, #f5b55a);
+    text-decoration: none;
+  }
 
-.product-description {
-  margin-top: 8px;
-  margin-bottom: 16px;
-}
 
-.product-quantity {
-  display: flex;
-  align-items: center;
-}
 
-.product-quantity-input {
-  border: none;
-  width: 60px;
-  height: 28px;
-  font-size: 16px;
-  text-align: center;
-  margin: 8px;
-}
 
-.add-to-cart {
-  margin-top: 16px;
-}
 
-.product-details {
-  background-color: #FFE7C2;
-  padding: 16px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 0 0 4px 4px;
-}
+  
+
 </style>

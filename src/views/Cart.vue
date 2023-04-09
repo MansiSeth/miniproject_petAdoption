@@ -4,9 +4,6 @@
       <My-cart v-if="ShowCartFlag" :cart-items="CartItems"></My-cart>
       <My-cart v-else :cart-items="CartItems"></My-cart>
     </div>
-    <div class="checkoutbutton">
-      <button @click="gotocheckout" class="checkout"><span>Checkout</span></button>
-    </div>
   </div>
 </template>
 
@@ -47,22 +44,13 @@ export default {
     },
 
     gotocheckout() {
-      this.$router.push({ name: "Checkout", props: { CartItems: this.CartItems } });
+      this.$router.push({ name: "Checkout", props: { 
+        CartItems: this.CartItems,
+      } });
     },
   },
+
+
 };
 </script>
 
-<style lang="scss" scoped>
-.checkout {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: white;
-  font-size: 34px;
-  background: #ffbd59;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-}
-</style>
