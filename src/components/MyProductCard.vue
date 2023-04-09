@@ -77,7 +77,7 @@ export default {
 .product-quantity{
   display: flex;
   background-color: azure;
-  width:90px;
+  width:80px;
   height:30px;
   align-items: center;
   margin-top:10px;

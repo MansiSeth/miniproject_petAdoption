@@ -8,11 +8,10 @@
           </div>
           <div class="cart-item-details">
             <div class="cart-item-name">{{ item.p_name }}</div>
-            <div class="cart-item-quantity">
-              Quantity:
-              <button @click="incrementQuantity(item)">+</button>
+            <div class="product-quantity">
+              <button @click="incrementQuantity(item)" class="quantity-btn">+</button>
                 {{ item.quantity }}
-              <button @click="decrementQuantity(item)">-</button>
+              <button @click="decrementQuantity(item)" class="quantity-btn">-</button>
             </div>
             <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
           </div>
@@ -22,7 +21,7 @@
         <div class="cart-summary">
           <div>Subtotal: {{ formatPrice(subtotal) }}</div>
           <div>Taxes: {{ formatPrice(taxes) }}</div>
-          <div>Total: {{ formatPrice(total) }}</div>
+          <div><b>Total:</b> {{ formatPrice(total) }}</div>
           <button @click="gotocheckout" class="checkout"><span>Checkout</span></button>
         </div>
       </div>
@@ -85,10 +84,12 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 300px; /* Increased width */
+  height: 300px;
   background-color: #FFE7C2;
   border-radius: 10px;
   padding: 16px;
   margin-left: auto; /* Aligned to the right */
+  font-size: 32px;
 }
 
 
@@ -112,6 +113,11 @@ export default {
 .cart-item{
   display: flex;
   background-color: #FFE7C2;
+  border-radius: 10px;
+  margin-top:10px;
+  margin-right:30px;
+  margin-left:50px;
+
 }
 
 .cart-item-details {
@@ -120,7 +126,7 @@ export default {
   position: relative;
    width: 450px;
   height: 138px;
-  left: 118px;
+  left: 20px;
   top:50px;
   
   
@@ -150,7 +156,34 @@ export default {
   display:inline;
 }
 .cart-item-image{
-  margin-top: 8px;
+  margin-bottom:0;
+  margin-top:0;
+  align-items: center;
+ 
+
+}
+.product-image{
+  width: 300px;
+  height: 200px;
+  border-radius: 10px 0px 0px 10px;
+}
+.quantity-btn{
+    background-color:#FFBD59;
+  width:40px;
+  height:30px;
+  border-radius: 10px
+
+}
+.product-quantity{
+  display: flex;
+  background-color: azure;
+  width:80px;
+  height:30px;
+  align-items: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
 
 }
 

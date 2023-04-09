@@ -102,9 +102,8 @@ export default {
 
 
 .cart-btn{
-    
-    width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   background-color: transparent;
   outline: none;
   border: none; /* remove border */
@@ -114,10 +113,13 @@ export default {
   justify-content: center; /* center align horizontally */
   align-items: center;
   cursor: pointer;
+    
+
 }
 .cart-vector{
     width:60px;
     height:60px;
+
 }
 .cart-btn :active{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);

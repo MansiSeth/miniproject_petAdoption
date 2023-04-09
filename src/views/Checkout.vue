@@ -16,13 +16,18 @@
               margin-bottom: 10px;
             "
           >
-            <h3>Address {{ index + 1 }}</h3>
+            <input type="radio"
+  :value="'Address' + (index + 1) "
+  
+  :checked="selectedAddress === index"
+  @change="selectAddress(index)"
+><h3>Address {{ index + 1 }}</h3>
             <div>
               <p>{{ fullAddress(index) }}</p>
               <v-btn @click="editAddress(index)" style="margin-right: 10px"
                 >Edit</v-btn
               >
-              <button @click="selectAddress(index)">Select</button>
+              
             </div>
             <div v-show="editMode[index]">
               <v-text-field
@@ -69,7 +74,6 @@
     </v-expansion-panels>
   </div>
 </template>
-
 <script>
 import MyCart from '@/components/MyCart.vue'
 
@@ -87,34 +91,38 @@ export default {
       zipcodeInputs: [''],
       addressInputs: [''],
       cartItems: []
-}
-},
-methods: {
-fullAddress (index) {
-  return `${this.addressInputs[index]}, ${this.zipcodeInputs[index]} ${this.nameInputs[index]}`
-},
-selectAddress (index) {
-this.selectedAddress = index
-},
-editAddress (index) {
-this.editMode[index] = true
-},
-saveAddress (index) {
-this.editMode[index] = false
-},
-cancelEdit (index) {
-this.editMode[index] = false
-},
-addAddress () {
-this.addresses.push('')
-this.editMode.push(true)
-this.nameInputs.push('')
-this.zipcodeInputs.push('')
-this.addressInputs.push('')
-}
-}
+    }
+  },
+  methods: {
+    fullAddress (index) {
+      return `${this.addressInputs[index]}, ${this.zipcodeInputs[index]} ${this.nameInputs[index]}`
+    },
+    selectAddress (index) {
+      this.selectedAddress = index
+    },
+    editAddress (index) {
+      this.editMode[index] = true
+    },
+    saveAddress (index) {
+      this.nameInputs[index] = this.nameInputs[index]
+      this.zipcodeInputs[index] = this.zipcodeInputs[index]
+      this.addressInputs[index] = this.addressInputs[index]
+      this.editMode[index] = false // set editMode to false
+    },
+    cancelEdit (index) {
+      this.editMode[index] = false // set editMode to false
+    },
+    addAddress () {
+      this.addresses.push('')
+      this.editMode.push(true)
+      this.nameInputs.push('')
+      this.zipcodeInputs.push('')
+      this.addressInputs.push('')
+    }
+  }
 }
 </script>
+
 
 
 
