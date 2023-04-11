@@ -1,5 +1,8 @@
 <template>
 <div>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
   <my-navbar></my-navbar>
  <router-view></router-view>
   
@@ -29,5 +32,11 @@ export default {
   }),
 };
 </script>
+<style>
+div{
+  font-family: 'Inter', sans-serif;
+}
+</style>
+
 
 

@@ -1,8 +1,6 @@
 <template>
     <div>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+     
       <div class="content">
         <div class="website-content-website-content">
           <span class="website-content-text">
@@ -29,45 +27,80 @@
           </span>
         </div>
       </div>
-      <div class="product-cards">
-        <div v-for="product in products" :key="product.name">
-          <product-card :product="product"></product-card>
-        </div>
+     <div class="search-bar">
+      <my-search-bar @search="searchInProducts($event, searchText)"></my-search-bar>
       </div>
+ 
+      
+
+
+      <div class="product-cards">
+        <!-- <div v-for="product in products" :key="product.name">
+          <product-card :product="product"></product-card> -->
+
+          <MyProductCard v-for="product in products" :key="product.p_id" :jsonproduct="product"
+           @add-to-cart="addToCart"></MyProductCard>
+      </div>   
+
     </div>
+  
   </template>
   
   <script>
+import MySearchBarVue from '@/components/MySearchBar.vue';
   import MyFooter from '../components/MyFooter.vue';
   import MyNavbar from '../components/MyNavbar.vue';
-  import ProductCard from '../components/MyProductCard.vue';
-  
+  import MyProductCard from '../components/MyProductCard.vue';
+  import ProductData from '../data/Inventory.json';
+  import MySearchBar from '../components/MySearchBar.vue';
+  import MyCart from '../components/MyCart.vue';
+
+
   export default {
-    name: 'WebsiteContent',
-  
-    components: { MyNavbar, MyFooter, ProductCard },
-  
-    data() {
-      return {
-        rawpdwq: ' ',
-        rawi7zn: ' ',
-        products: [
-          { name: 'Product 1', price: 10 },
-          { name: 'Product 2', price: 20 },
-          { name: 'Product 3', price: 30 },
-          { name: 'Product 4', price: 10 },
-          { name: 'Product 5', price: 20 },
-          { name: 'Product 6', price: 30 },
-          { name: 'Product 7', price: 30 },
-          { name: 'Product 8', price: 10 },
-          { name: 'Product 9', price: 20 },
-          { name: 'Product 10', price: 30 },
-        ],
-      };
+  name: 'Shop',
+
+  components: { MyNavbar, MyFooter, MyProductCard, MySearchBar, MyCart },
+
+  data() {
+    return {
+      rawpdwq: ' ',
+      rawi7zn: ' ',
+      products: ProductData,
+      CartItems: [],
+      ShowCartFlag: false
+    };
+  },
+   
+
+methods: {
+    addToCart(product) {
+       console.log("addToCart is called");
+       console.log("addToCart is called with the following product:", product);
+      this.CartItems.push(product);
+      localStorage.setItem('CartItems', JSON.stringify(this.CartItems));
+},
+
+
+    ShowCart(){
+      this.ShowCartFlag = true;
     },
-    
-  };
-  </script>
+
+    navigateToCart(CartItems){
+      this.$router.push({ name: 'Cart', props: CartItems });
+    },
+    searchInProducts(searchText) {
+      if (searchText) {
+        this.products = ProductData.filter(rec => rec.p_name.toLowerCase().includes(searchText.toLowerCase()));
+      } else {
+        this.products = ProductData;
+      }
+    }
+   
+  }
+  
+};
+</script>
+
   
   
   
@@ -144,5 +177,6 @@
   justify-content: center;
   gap: 20px;
 }
+
 
   </style>

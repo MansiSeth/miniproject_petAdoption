@@ -9,7 +9,7 @@
     
         <div class="search-bar">
 
-        <v-text-field solo label="Search" append-icon="mdi-magnify"  v-model="searchText" @input="$emit('search',$event)"></v-text-field>
+        <v-text-field class="search-bar" solo label="Search" append-icon="mdi-magnify"  v-model="searchText" @input="$emit('search',$event)"></v-text-field>
 
         </div>
 
@@ -61,19 +61,17 @@ export default {
   border-radius: 50%;
   margin-right: 10px;
 }
-/* .search-bar {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px 0px 0px 10px;
-    overflow: hidden;
-    font-family: 'Courier New', Courier, monospace;
-}  */
-/* input[type="text"] {
-    border: none;
-    padding: 5px;
-    width: 200px;
-} */
+
+.search-bar{
+    width: 90%;
+    position: relative;
+    top: 5px;
+    left:30px;
+    border-radius:20px;
+}
+
+
+
 .search-btn {
     background-color: #FFBD59;
     border: none;
@@ -91,6 +89,8 @@ export default {
 .search-btn :focus{
     outline:none;
 }
+
+
 .search-btn:hover:before {
     transform: scale(1.2);
 }
@@ -98,10 +98,12 @@ export default {
     width:30px;
     border-radius: 30%;
 }
+
+
+
 .cart-btn{
-    
-    width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   background-color: transparent;
   outline: none;
   border: none; /* remove border */
@@ -111,10 +113,13 @@ export default {
   justify-content: center; /* center align horizontally */
   align-items: center;
   cursor: pointer;
+    
+
 }
 .cart-vector{
-    width:20px;
-    height:20px;
+    width:60px;
+    height:60px;
+
 }
 .cart-btn :active{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);

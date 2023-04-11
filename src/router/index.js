@@ -6,6 +6,9 @@ import inventory from '../views/Inventory.vue'
 import shop from  "@/views/Shop.vue";
 import MyEditInventoryCard from "@/views/EditInventory.vue";
 
+import Cart from '../views/Cart.vue'
+import Donate from '../views/Donate.vue'
+import Checkout from '../views/Checkout.vue'
 
 
 
@@ -14,26 +17,44 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home',
     
   },
   {
     path: '/inventory',
     name: 'inventory',
-    component: ()=>import('../views/Inventory.vue')
+    component: inventory
   },
   {
     path: '/shop',
     name:'shop',
-    component: ()=>import('@/views/Shop.vue')
+    component: shop
   },
   {
     path: '/inventory/:id',
-    name: 'EditInventory',
-    component: ()=>import('@/views/EditInventory.vue'),
+    name: 'EditProduct',
+    component: MyEditInventoryCard,
     props: true,
   },
-  
+  {
+    path: '/cart',
+    name : "Cart",
+    component: Cart,
+    props: { CartItems: [] } // add props here
+
+  },
+  {
+    path: '/donate',
+    name : "Donate",
+    component: Donate,
+
+  },
+  {
+    path: '/checkout',
+    name : "Checkout",
+    component: Checkout,
+
+  }
   
  
 
