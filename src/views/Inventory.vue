@@ -1,79 +1,75 @@
 <template>
-<div class="inventory-page">
+  <div class="inventory-page">
     <h2 class="page-title">My<span class="yellow-text">Store</span></h2>
 
-    <my-search-bar @search="searchInInventory($event, searchText)"></my-search-bar>
-
     <div class="inventory-list">
-        <MyInventoryCard v-for="product in products" :key="product.p_id" :product="product" />
-        <button class="AddButton" @click="$router.push('/inventory/0')">+</button>
+      <MyInventoryCard
+        v-for="product in products"
+        :key="product.p_id"
+        :product="product"
+      />
+       <button class="AddButton" @click="$router.push('/inventory/0')">+</button>
     </div>
-
-</div>
+    
+  </div>
 </template>
 
+
+
+
 <script>
-import MySearchBar from '@/components/MySearchBar.vue';
 import MyInventoryCard from "../components/MyInventoryCard.vue";
-import ProductData from "../data/Inventory.json";
+import ProductsData from "../data/Inventory.json";
 
 export default {
-    components: {
-        MyInventoryCard,
-        MySearchBar
-    },
-    data() {
-        return {
-            products: ProductData,
-        }
-    },
-
-    methods: {
-        searchInInventory(searchText) {
-            if (searchText) {
-                this.products = ProductData.filter(rec => rec.p_name.toLowerCase().includes(searchText.toLowerCase()));
-            console.log("searchInventory works");
-            } else {
-                this.products = ProductData;
-            }
-
-        }
+  components: {
+    MyInventoryCard,
+  },
+  data() {
+    return {
+      products: ProductsData,
     }
+  },
 };
 </script>
 
+
+
+
+
+
+
 <style>
 .inventory-page {
-    margin: 0 auto;
-    padding: 20px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .page-title {
-    margin: 0 0 20px;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .inventory-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .yellow-text {
-    color: rgba(255, 189, 89, 1);
+  color: rgba(255, 189, 89, 1);
 }
-
 .AddButton {
-    background-color: #ffe7c2;
+    background-color:#ffe7c2;
     border-radius: 30px;
     width: 300px;
     height: 425px;
     font-size: 24px;
     margin-top: 20px;
-    font-size: 50px;
+    font-size:50px ;
     border: 2px solid;
-
-}
+    
+  }
 </style>
