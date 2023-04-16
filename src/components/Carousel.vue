@@ -1,162 +1,110 @@
 <template>
-    <div class="carousel">
-      <div class="slide-container">
-        <div class="slide-content">
-          <div class="card-wrapper">
-            <div class="card">
-              <div class="image-content">
-                <span class="overlay">
-                </span>
-                <div class="card-image">
-                  <img src="../assets/pawVector.png" alt="" class="card-img">
-                </div>
-              </div>
-              <div class="card-content">
+  <div class="carousel" ref="carousel">
+    <div class="slide-container">
+          <div class="card-image">
+              <img src="../assets/pawVector.png" alt="" class="card-img">
+          </div>
+          <div class="card-content">
                 <h2 class="name">Dog 1</h2>
                 <p class="desc">best dog you can pet</p>
                 <br>
                 <button class="button">View More</button>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
-      <div class="slide-container">
-        <div class="slide-content">
-          <div class="card-wrapper">
-            <div class="card">
-              <div class="image-content">
-                <span class="overlay">
-                </span>
-                <div class="card-image">
-                  <img src="../assets/pawVector.png" alt="" class="card-img">
-                </div>
-              </div>
-              <div class="card-content">
-                <h2 class="name">Dog 1</h2>
-                <p class="desc">best dog you can pet</p>
+    <div class="slide-container">
+      <div class="card-image">
+              <img src="../assets/pawVector.png" alt="" class="card-img">
+          </div>
+          <div class="card-content">
+                <h2 class="name">Dog 2</h2>
+                <p class="desc">bestes dog</p>
                 <br>
                 <button class="button">View More</button>
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
-      <div class="slide-container">
-        <div class="slide-content">
-          <div class="card-wrapper">
-            <div class="card">
-              <div class="image-content">
-                <span class="overlay">
-                </span>
-                <div class="card-image">
-                  <img src="../assets/pawVector.png" alt="" class="card-img">
-                </div>
-              </div>
-              <div class="card-content">
-                <h2 class="name">Dog 1</h2>
-                <p class="desc">best dog you can pet</p>
-                <br>
-                <button class="button">View More</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
-  </template>
-    
-  <script>
-  
-  </script>
-  
-  <style scoped>
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    <div class="slide-container">
+    <div class="card-image">
+              <img src="../assets/pawVector.png" alt="" class="card-img">
+          </div>
+          <div class="card-content">
+                <h2 class="name">Dog 3</h2>
+                <p class="desc">best dog you can pet</p>
+                <br>
+                <button class="button">View More</button>
+          </div>
+    </div>
+    <button class="prev-button"><</button>
+    <button class="next-button">></button>
+  </div>
+</template>
+
+<script>
+export default {
+  mounted() {
+    let currentSlideIndex = 0;
+    const slideContainers = this.$refs.carousel.querySelectorAll('.slide-container');
+    const prevButton = this.$el.querySelector('.prev-button');
+    const nextButton = this.$el.querySelector('.next-button');
+
+    function updateCarousel() {
+      slideContainers.forEach((container, index) => {
+        const offset = (index - currentSlideIndex) * 100;
+        container.style.transform = `translateX(${offset}%)`;
+      });
+    }
+
+    prevButton.addEventListener('click', () => {
+      currentSlideIndex = Math.max(currentSlideIndex - 1, 0);
+      updateCarousel();
+    });
+
+    nextButton.addEventListener('click', () => {
+      currentSlideIndex = Math.min(currentSlideIndex + 1, slideContainers.length - 1);
+      updateCarousel();
+    });
   }
-  .carousel
-  {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #efefef;
-  }
-  .card
-  {
-    width: 220px;
-    border-radius: 25px;
-    background-color: #ffffff;
-  }
-  .slide-content
-  {
-    margin: 0 40px;
-  }
-  .image-content, 
-  .card-content
-  {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 14px;
-    align-items: center;
-  }
-  .image-content
-  {
+};
+</script>
+
+<style scoped>
+  .carousel {
     position: relative;
-    row-gap: 5px;
-    
+    display: flex;
+    overflow-x: hidden;
   }
-  .overlay
-  {
+
+  .slide-container {
+    width: 100%;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-out;
+  }
+
+  .prev-button,
+  .next-button {
     position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #ffbd59;
-    border-radius: 25px 25px 25px 25px;
-  }
-  .card-image
-  {
-    position: relative;
-    height: 150px;
-    width: 150px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: #ffffff;
-    padding: 3px;
-  }
-  .card-image .card-img
-  {
-    height:100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #000000;
-  }
-  .desc
-  {
-    font-size: 14px;
-    color: #707070;
-    text-align: center;
-  }
-  .button
-  {
-    border:none;
-    font-size: 16px;
-    color: #060000;
-    padding: 8px 16px;
-    background-color: #ffbd59;
-    border-radius: 6px;
-    margin: 14px;
+    border: none;
+    background-color: #efefef;
+    color: #333;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease-out;
   }
-  .button:hover{
-    background-color: #f5d39e;
+
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: #ddd;
   }
-  </style>
-    
-  
+
+  .prev-button {
+    left: 20px;
+  }
+
+  .next-button {
+    right: 20px;
+  }
+</style>
