@@ -4,7 +4,7 @@
       <div class="cart-items">
         <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
           <div class="cart-item-image">
-            <img src="https://i.ibb.co/KjBPdgJ/inventory.png" :alt="item.p_name" class="product-image" />
+            <img src="item.image" :alt="item.p_name" class="product-image" />
           </div>
           <div class="cart-item-details">
             <div class="cart-item-name">{{ item.p_name }}</div>

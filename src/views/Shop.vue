@@ -54,6 +54,7 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
   import ProductData from '../data/Inventory.json';
   import MySearchBar from '../components/MySearchBar.vue';
   import MyCart from '../components/MyCart.vue';
+  import axios from 'axios';
 
 
   export default {
@@ -65,7 +66,7 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
     return {
       rawpdwq: ' ',
       rawi7zn: ' ',
-      products: ProductData,
+      products: [],
       CartItems: [],
       ShowCartFlag: false
     };
@@ -73,6 +74,10 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
    
 
 methods: {
+     async init(){
+            let response = await axios.get('http://localhost:3000/products') 
+            this.products = response.data
+        } ,
     addToCart(product) {
        console.log("addToCart is called");
        console.log("addToCart is called with the following product:", product);
@@ -96,7 +101,11 @@ methods: {
       }
     }
    
-  }
+  },
+    mounted () {
+        this.init()
+    
+    }
   
 };
 </script>
