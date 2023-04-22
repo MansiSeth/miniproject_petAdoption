@@ -3,17 +3,16 @@
     <div class="cart-container">
       <div class="cart-items">
         <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
-          <div class="cart-item-image">
-            <img src="item.image" :alt="item.p_name" class="product-image" />
-          </div>
+           <img :src="item.image" :alt="item.name" class="product-image">
           <div class="cart-item-details">
-            <div class="cart-item-name">{{ item.p_name }}</div>
+            <div class="cart-item-name">{{ item.name }}</div>
+            <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
             <div class="product-quantity">
               <button @click="incrementQuantity(item)" class="quantity-btn">+</button>
                 {{ item.quantity }}
               <button @click="decrementQuantity(item)" class="quantity-btn">-</button>
             </div>
-            <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
+            
           </div>
         </div>
       </div>
@@ -30,30 +29,47 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
 
   name: "MyCart",
   props: ["cartItems"],
-  computed: {
-    subtotal() {
-      return this.cartItems.reduce((total, item) => {
-        if (typeof item.p_price === 'number' && typeof item.quantity === 'number') {
-          return total + item.p_price * item.quantity;
-        } else {
-          return total;
-        }
-      }, 0);
-    },
-    taxes() {
-      return this.subtotal * 0.1;
-    },
-    total() {
-      return this.subtotal + this.taxes;
-    },
+  data() {
+    return {
+      subtotal: 0,
+      taxes: 0,
+      total: 0
+    }
+  },
+  created() {
+    this.computeTotal();
+  },
+  mounted(){
+    this.loadCartItems();
   },
   methods: {
+    async loadCartItems() {
+      const response = await axios.get('http://localhost:3000/products');
+      const products = response.data;
+      const cartItems = [];
+      for (const product of products) {
+        const quantity = localStorage.getItem(product.id) || 0;
+        if (quantity > 0) {
+          cartItems.push({
+            id: product.p_id,
+            name: product.p_name,
+            p_price: product.p_price,
+            quantity: quantity,
+            image: product.image
+          });
+        }
+      }
+      this.cartItems = cartItems;
+    },
     incrementQuantity(item) {
       item.quantity++;
+      this.computeTotal();
+      this.$emit('cart-updated', this.cartItems);
     },
     decrementQuantity(item) {
       if (item.quantity > 1) {
@@ -61,18 +77,35 @@ export default {
       } else {
         this.cartItems.splice(this.cartItems.indexOf(item), 1);
       }
+      this.computeTotal();
+      this.$emit('cart-updated', this.cartItems);
     },
     formatPrice(price) {
       return typeof price === 'number' ? `$${price.toFixed(2)}` : '';
     },
+    computeTotal() {
+      let subtotal = 0;
+      for (const item of this.cartItems) {
+        subtotal += item.p_price * item.quantity;
+      }
+      this.subtotal = subtotal;
+      this.taxes = subtotal * 0.1;
+      this.total = subtotal + this.taxes;
+    },
     gotocheckout() {
       this.$router.push({ name: "Checkout", props: { 
-        CartItems: this.cartItems,
+        cartItems: this.cartItems,
       } });
     },
   },
+  watch: {
+    cartItems() {
+      this.computeTotal();
+    }
+  }
 };
 </script>
+
 
 <style lang="scss" scoped>
 .cart-container {
