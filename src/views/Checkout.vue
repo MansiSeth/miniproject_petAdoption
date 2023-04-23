@@ -65,7 +65,8 @@
             <p>{{ fullAddress(selectedAddress) }}</p>
           </div>
           <div>
-            <My-cart :cart-items="cartItems"></My-cart>
+            <My-cart :cart-items="cartItems" >
+            </My-cart>
           </div>
           
         </v-expansion-panel-content>

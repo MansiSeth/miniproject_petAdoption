@@ -14,7 +14,7 @@
           <button @click="decrementQuantity" class="quantity-btn">-</button>
         </div>
         <div class="add-to-cart">
-          <button class="standardButton" @click="addtoCart()">Add to Cart</button>
+          <button class="standardButton" @click="addtoCart(jsonproduct)">Add to Cart</button>
         </div>
       </div>
     </div>

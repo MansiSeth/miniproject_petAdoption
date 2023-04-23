@@ -54,6 +54,7 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
   import ProductData from '../data/Inventory.json';
   import MySearchBar from '../components/MySearchBar.vue';
   import MyCart from '../components/MyCart.vue';
+  import axios from 'axios';
 
 
   export default {
@@ -65,7 +66,7 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
     return {
       rawpdwq: ' ',
       rawi7zn: ' ',
-      products: ProductData,
+      products: [],
       CartItems: [],
       ShowCartFlag: false
     };
@@ -73,11 +74,26 @@ import MySearchBarVue from '@/components/MySearchBar.vue';
    
 
 methods: {
-    addToCart(product) {
-       console.log("addToCart is called");
-       console.log("addToCart is called with the following product:", product);
-      this.CartItems.push(product);
-      localStorage.setItem('CartItems', JSON.stringify(this.CartItems));
+     async init(){
+            let response = await axios.get('http://localhost:3000/products') 
+            this.products = response.data
+        } ,
+         methods: {
+  addToCart(product) {
+    const existingItem = this.cartItems.find(item => item.id === product.p_id);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cartItems.push({
+        id: product.p_id,
+        name: product.p_name,
+        p_price: product.p_price,
+        quantity: 1,
+        image: product.image
+      });
+    }
+    this.$emit('cart-updated', this.cartItems);
+  }
 },
 
 
@@ -96,7 +112,11 @@ methods: {
       }
     }
    
-  }
+  },
+    mounted () {
+        this.init()
+    
+    }
   
 };
 </script>
