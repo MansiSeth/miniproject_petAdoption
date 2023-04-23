@@ -56,9 +56,14 @@ const routes = [
   },
   {
     path: '/checkout',
-    name : "Checkout",
+    name: 'Checkout',
     component: Checkout,
-
+    props: (route) => ({ 
+      cartItems: route.params.CartItems,
+      subtotal: route.params.subtotal,
+      taxes: route.params.taxes,
+      total: route.params.total,
+    }),
   },
   {
     path:'/findacuddlebuddy',
