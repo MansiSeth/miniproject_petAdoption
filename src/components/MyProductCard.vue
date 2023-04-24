@@ -1,142 +1,164 @@
 <template>
-<div class="product-card">
-  <div class="product-image">
-    <div class="product-image" :style="{ backgroundImage: 'url(' + product.image + ')' }">
-    <img src="../assets/dogbone.jpg" alt="dogboneimg">
-    </div>
-  </div>
-
-  <div class="product-info">
-    <div class="product-qunatity-placement">
-      <h2 class="product-name">{{ product.name }}</h2>
-
-      <div class="product-quantity">
-        <button class="product-quantity-left" @click="decrementQuantity">-</button>
-        <span>{{ quantity }}</span>
-        <button class="product-quantity-right" @click="incrementQuantity">+</button>
+  <div>
+    <div class="inventory-card">
+      <div class="product-image-wrapper">
+        <img :src="jsonproduct.image" :alt="jsonproduct.name" class="product-image" />
+      </div>
+      <div class="product-details">
+        <h3 class="product-name">{{ jsonproduct.p_name }}</h3>
+        <p class="product-price">{{ jsonproduct.p_price }}</p>
+        <p class="product-description">{{ jsonproduct.p_desc }}</p>
+        <div class="product-quantity">
+          <button @click="incrementQuantity" class="quantity-btn">+</button>
+          <span class="quantity">{{ quantity }}</span>
+          <button @click="decrementQuantity" class="quantity-btn">-</button>
+        </div>
+        <div class="add-to-cart">
+          <button class="standardButton" @click="addtoCart(jsonproduct)">Add to Cart</button>
+        </div>
       </div>
     </div>
-
-    <p class="product-description">{{ product.description }}</p>
-    <div class="product-price">{{ product.price }}</div>
-
-    <componentButton class="standardButton" text='Add to Cart' @click="$router.push('/tester')"></componentButton>
   </div>
-</div>
-
-
 </template>
-  
-  
 <script>
-import componentButton from './MyButton.vue';
+import ProductsData from "../data/Inventory.json";
 
-  export default {
-    name: "productCard",
-    props: {
-        product: {
-            type: Object,
-            required: true
-        }
+export default {
+  data() {
+    return {
+      product: ProductsData,
+      quantity: 0,
+    };
+  },
+
+  props: {
+    jsonproduct: {
+      type: Object,
+      required: true,
     },
-    data() {
-          return {
-              quantity: 0
-          };
-      },
-      methods: {
-          incrementQuantity() {
-              this.quantity++;
-          },
-          decrementQuantity() {
-              if (this.quantity >= 1) {
-                  this.quantity--;
-              }
-          }
-      },
-      components: { componentButton }
-  };
-  </script>
+  },
+
+  methods: {
+    addtoCart() {
+      const product = {
+        image:this.jsonproduct.image,
+        p_name: this.jsonproduct.p_name,
+        p_price: this.jsonproduct.p_price,
+        quantity: this.quantity,
+      };
+      this.$emit("add-to-cart", product);
+    },
+    incrementQuantity() {
+      this.quantity++;
+    },
+    decrementQuantity() {
+      if (this.quantity >= 1) {
+        this.quantity--;
+      }
+    },
+  },
+};
+</script>
+<style scoped>
+
+.inventory-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 20px 20px 20px;
+  border: 2px solid;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 425px;
+  margin: 20px;
+  background-color: #ffe7c2;
+  position: relative;
+}
+.product-quantity{
+  display: flex;
+  background-color: azure;
+  width:80px;
+  height:30px;
+  align-items: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   
-<style>
-  .product-card {
-    display: flex;
-    width: 300px;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #FFE7C2;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 400px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-image {
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .product-info {
-    padding: 10px;
-  }
-  
-  .product-name {
-    font-size: 20px;
-    margin: 0;
-  }
-  
-  .product-description {
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  .product-price {
-    font-size: 24px;
-    margin-top: 10px;
-  }
-  
-  .product-quantity {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    background-color: white;
+
+}
+.quantity-btn{
+  background-color:#FFBD59;
+  width:40px;
+  height:30px;
+  border-radius: 10px;
+}
+.product-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 30px 30px 0px 0px;
+  border-top: 0px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-left: 2px solid;
+}
+
+
+.product-name {
+  margin: 0;
+}
+
+.product-id {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.product-price {
+  margin: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007aff;
+}
+.standardButton {
+    background: #FFBD59;
+    background-image: -webkit-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -moz-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -ms-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: -o-linear-gradient(top, #FFBD59, #e6bb7a);
+    background-image: linear-gradient(to bottom, #FFBD59, #e6bb7a);
+    -webkit-border-radius: 20;
+    -moz-border-radius: 20;
     border-radius: 20px;
-  }
-  
-  .product-quantity button {
-    background-color: #FFBD59;
-    color: #333;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+    color: black;
+    font-size: 13px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border-width: 0;
+    text-align: center;
     cursor: pointer;
-    border: 2px;
+    margin-left:100px;
+    position: relative;
+    bottom:40px;
   }
-
-  .product-quantity-left {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.product-quantity-right {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
- 
-}
   
-  .product-quantity span {
-    margin: 0 10px;
-    font-size: 18px;
-    font-weight: bold;
+  .standardButton:hover {
+    background: #e0aa5a;
+    background-image: -webkit-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -moz-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -ms-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: -o-linear-gradient(top, #e0aa5a, #f5b55a);
+    background-image: linear-gradient(to bottom, #e0aa5a, #f5b55a);
+    text-decoration: none;
   }
 
-  .product-qunatity-placement {
-    display: flex;
-    justify-content: space-between;
-  }
-  </style>
+
+
+
+
   
+
+</style>

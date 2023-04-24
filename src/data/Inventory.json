@@ -1,44 +1,6 @@
-[
-  {
-    "p_id": "1001",
-    "p_name": "Product A",
-    "p_price": "$10.99",
-    "p_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra leo quis dolor auctor, at consectetur metus aliquet.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  },
-  {
-    "p_id": "1002",
-    "p_name": "Product B",
-    "p_price": "$15.99",
-    "p_desc": "Nulla facilisi. Mauris ac nibh vel magna pretium feugiat. Duis convallis, augue vel molestie molestie, enim metus varius ante, at consequat velit libero sit amet turpis.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  },
-  {
-    "p_id": "1003",
-    "p_name": "Product C",
-    "p_price": "$19.99",
-    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  },
-  {
-    "p_id": "1004",
-    "p_name": "Product D",
-    "p_price": "$19.99",
-    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  },
-  {
-    "p_id": "1005",
-    "p_name": "Product E",
-    "p_price": "$19.99",
-    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  },
-  {
-    "p_id": "1006",
-    "p_name": "Product F",
-    "p_price": "$19.99",
-    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",
-    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"
-  }
-]
+[  {    "p_id": "1001",    "p_name": "Product A",    "p_price": 10.99,    "p_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra leo quis dolor auctor, at consectetur metus aliquet.",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  }, 
+ {    "p_id": "1002",    "p_name": "Product B",    "p_price": 15.99,    "p_desc": "Nulla facilisi. Mauris ac nibh vel magna pretium feugiat. Duis convallis, augue vel molestie molestie, enim metus varius",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  }, 
+  {    "p_id": "1003",    "p_name": "Product C",    "p_price": 19.99,    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  }, 
+   {    "p_id": "1004",    "p_name": "Product D",    "p_price": 19.99,    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  },  
+   {    "p_id": "1005",    "p_name": "Product E",    "p_price": 19.99,    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  }, 
+    {    "p_id": "1006",    "p_name": "Product F",    "p_price": 19.99,    "p_desc": "Vestibulum condimentum, arcu vitae pulvinar posuere, quam sapien aliquam nunc, ac rhoncus nulla magna eu libero.",    "image": "https://i.ibb.co/KjBPdgJ/inventory.png"  }]
