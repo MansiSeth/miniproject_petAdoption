@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -40,16 +42,32 @@ export default {
     },
 
     methods: {
-        authenticate() {
-            if (this.username === "" || this.password === "") {
-                console.log("Please fill the fields");
-            } else {
-                console.log(this.username);
-                alert(`username is ${this.username} password is ${this.password}`);
-            }
-        },
-    },
-};
+  authenticate() {
+  axios.post('http://localhost:3000/user/login', {
+  username: this.username,
+  password: this.password
+}, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => {
+  console.log(response.data);
+  alert("Logged in successfully");
+  this.isLoggedIn = true;
+  this.userInfo = response.data;
+  this.$router.push('/');
+  this.$emit('login-successful');
+
+
+})
+.catch(error => {
+  console.log(error);
+  alert(this.error = "Authentication failed. Please check your username and password.");
+});
+
+}
+    }}
 </script>
 
 <style scoped>
