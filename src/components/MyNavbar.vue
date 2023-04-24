@@ -14,7 +14,7 @@
 
    
 
-    <button class="LogIn">
+    <button class="LogIn" @click="$router.push('/login')">
     <v-list-item two-line>
       <v-list-item-avatar>
         <img src="https://randomuser.me/api/portraits/women/81.jpg" />
