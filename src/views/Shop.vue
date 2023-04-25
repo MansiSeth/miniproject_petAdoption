@@ -5,7 +5,7 @@
         <div class="website-content-website-content">
           <span class="website-content-text">
             <span class="website-content-text1">
-              Spoil your furry friend with
+              Spoil your furry friend with  
               <span v-html="rawpdwq"></span>
             </span>
             <span class="website-content-text2">Gifts of Love</span>
@@ -66,8 +66,8 @@ export default {
     };
   },
 
-  created() {
-    axios.get('http://localhost:3000/products')
+  mounted() {
+    axios.get('http://192.168.1.6:3000/products')
       .then(response => {
         this.products = response.data;
       })

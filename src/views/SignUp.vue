@@ -34,7 +34,7 @@ export default {
 
   methods: {
     createUser() {
-      axios.post('http://localhost:3000/user/signup', {
+      axios.post('http://192.168.1.6:3000/user/signup', {
         username: this.username,
         password: this.password
       }, {

@@ -43,7 +43,7 @@ export default {
 
     methods: {
   authenticate() {
-  axios.post('http://localhost:3000/user/login', {
+  axios.post('http://192.168.1.6:3000/user/login', {
   username: this.username,
   password: this.password
 }, {
