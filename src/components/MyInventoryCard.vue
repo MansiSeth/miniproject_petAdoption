@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .inventory-card {
   display: flex;
   flex-direction: column;
