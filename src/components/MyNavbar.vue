@@ -8,7 +8,6 @@
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/shop">Shop</router-link></li>
       <li><router-link to="/donate">Donate</router-link></li>
-      <li><router-link to="/blog">Blog</router-link></li>
       <li><router-link to="/inventory">Inventory</router-link></li>
     </ul>
 
@@ -44,6 +43,12 @@ export default {
   padding: 10px;
   background-color: #fff;
 }
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
 
 .navbar-logo img {
   height: 40px;
