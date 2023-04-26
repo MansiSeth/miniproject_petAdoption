@@ -99,7 +99,6 @@
   img {
   flex-shrink: 0;
   height: 200px;
-  margin-right: 10px;
   }
   
   </style>
