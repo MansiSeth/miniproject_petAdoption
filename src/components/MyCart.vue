@@ -8,11 +8,15 @@
           </div>
           <div class="cart-item-details">
             <div class="cart-item-name">{{ item.p_name }}</div>
+
+            
             <div class="product-quantity">
-              <button @click="incrementQuantity(item)" class="quantity-btn">+</button>
-                {{ item.quantity }}
-              <button @click="decrementQuantity(item)" class="quantity-btn">-</button>
-            </div>
+          <button @click="decrementQuantity" class="quantity-btn-subs">-</button>
+          <span class="quantity">{{ item.quantity }}</span>
+          <button @click="incrementQuantity" class="quantity-btn-add">+</button>
+        </div>
+
+            
             <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
           </div>
         </div>
@@ -105,9 +109,13 @@ export default {
   text-decoration: none;
 }
 .checkout:hover{
-  background: #fcec3c;
+  background: #e0aa5a;
+  background-image: -webkit-linear-gradient(top, #e0aa5a, #f5b55a);
+  background-image: -moz-linear-gradient(top, #e0aa5a, #f5b55a);
+  background-image: -ms-linear-gradient(top, #e0aa5a, #f5b55a);
+  background-image: -o-linear-gradient(top, #e0aa5a, #f5b55a);
+  background-image: linear-gradient(to bottom, #e0aa5a, #f5b55a);
   text-decoration: none;
-  
 }
 
 .cart-item{
@@ -167,25 +175,28 @@ export default {
   height: 200px;
   border-radius: 10px 0px 0px 10px;
 }
-.quantity-btn{
-    background-color:#FFBD59;
-  width:40px;
-  height:30px;
-  border-radius: 10px
 
+.quantity-btn-subs{
+  background-color:#FFBD59;
+  width:30px;
+  height:30px;
+  border-radius: 30px 10px 30px 30px;
+}
+.quantity-btn-add{
+  background-color:#FFBD59;
+  width:30px;
+  height:30px;
+  border-radius: 30px 30px 30px 10px;
 }
 .product-quantity{
-  display: flex;
-  background-color: azure;
-  width:80px;
-  height:30px;
-  align-items: center;
-  margin-top:10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-
-
+    display: flex;
+    background-color: azure;
+    width: 65px;
+    height: 30px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30px;
 }
-
 </style>
 
