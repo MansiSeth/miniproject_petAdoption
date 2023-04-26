@@ -48,7 +48,6 @@
   <style>
   #app
   {
-    width: 1024px;
     margin-top: 60px;
   }
   .body
