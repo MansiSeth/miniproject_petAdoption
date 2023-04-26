@@ -10,9 +10,9 @@
                     <div class="cart-item-name">{{ item.p_name }}</div>
 
                     <div class="product-quantity">
-                        <button @click="decrementQuantity" class="quantity-btn-subs">-</button>
+                        <button @click="decrementQuantity(item)" class="quantity-btn-subs">-</button>
                         <span class="quantity">{{ item.quantity }}</span>
-                        <button @click="incrementQuantity" class="quantity-btn-add">+</button>
+                        <button @click="incrementQuantity(item)" class="quantity-btn-add">+</button>
                     </div>
 
                     <div class="cart-item-price">{{ formatPrice(item.p_price) }}</div>
@@ -69,7 +69,7 @@ export default {
             item.quantity++;
         },
         decrementQuantity(item) {
-            if (item.quantity > 1) {
+            if (item.quantity >= 1) {
                 item.quantity--;
             } else {
                 this.cartItems.splice(this.cartItems.indexOf(item), 1);
