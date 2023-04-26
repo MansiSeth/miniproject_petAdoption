@@ -1,18 +1,29 @@
 <template>
   <div class="CartButton">
     <div>
+      <h2>My Items</h2>
       <My-cart v-if="ShowCartFlag" :cart-items="CartItems"></My-cart>
       <My-cart v-else :cart-items="CartItems"></My-cart>
     </div>
+
+
+    <checkout></checkout>
+
+    
+
+    
   </div>
 </template>
 
 <script>
+import checkout from '../components/Checkout.vue';
 import MyCart from '../components/MyCart.vue';
+
+
 
 export default {
   name: 'Cart',
-  components: { MyCart },
+  components: { MyCart, checkout },
 
   data() {
     return {

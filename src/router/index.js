@@ -8,7 +8,7 @@ import MyEditInventoryCard from "@/views/EditInventory.vue";
 
 import Cart from '../views/Cart.vue'
 import Donate from '../views/Donate.vue'
-import Checkout from '../views/Checkout.vue'
+
 
 import FindaCuddleBuddy from '@/components/FindaCuddleBuddy.vue';
 import FindaHomeforMunchkin from '@/components/FindaHomeforMunchkin.vue';
@@ -49,7 +49,7 @@ const routes = [
   },
   {
     path: '/inventory/:id',
-    name: 'EditProduct',
+    name: 'EditInventory',
     component: MyEditInventoryCard,
     props: true,
   },
@@ -64,12 +64,6 @@ const routes = [
     path: '/donate',
     name : "Donate",
     component: Donate,
-
-  },
-  {
-    path: '/checkout',
-    name : "Checkout",
-    component: Checkout,
 
   },
   {
