@@ -154,6 +154,9 @@
           <div v-if="selectedAddress !== -1">
             <p><b>Selected Address:</b> {{ fullAddress(selectedAddress) }}</p>
           </div>
+          <div v-if="selectedOption !== -1">
+            <p><b>Payment Method:</b> {{paymentMethod}}</p>
+          </div>
           <div>
             <h3>My Items</h3>
 
@@ -187,6 +190,7 @@ export default {
       addressInputs: ["123 Main St.", "456 Maple Ave."],
       cartItems: [],
       selectedOption: "",
+      paymentMethod: ""
     };
   },
 
@@ -255,8 +259,10 @@ export default {
     },
 
     nextPaymentPanel() {
-      this.panel = [2];
-    },
+  this.paymentMethod = this.selectedOption;
+  this.panel = [2];
+},
+
   },
 };
 </script>
