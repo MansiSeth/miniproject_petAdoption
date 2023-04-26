@@ -4,32 +4,58 @@
       <img src="@/assets/logo.png" alt="Logo" />
       <h1 class="navbar-company-name">Tail-or Made</h1>
     </div>
-    <ul class="navbar-links">
+    <button class="navbar-toggle" @click="toggleMenu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <ul class="navbar-links" id="nav-links">
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/shop">Shop</router-link></li>
       <li><router-link to="/donate">Donate</router-link></li>
       <li><router-link to="/inventory">Inventory</router-link></li>
     </ul>
 
-   
-
     <button class="LogIn" @click="$router.push('/login')">
-    <v-list-item two-line>
+      <v-list-item two-line>
+        <v-list-item-avatar>
+          <img src="https://randomuser.me/api/portraits/women/81.jpg" />
+        </v-list-item-avatar>
 
-      <v-list-item-content>
-        <v-list-item-title>Log In</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>Jane Smith</v-list-item-title>
+          <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </button>
   </nav>
 </template>
 
 <script>
-
 export default {
   name: "navbar",
+  data() {
+    return {
+      showMenu: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      const nav =document.getElementById('nav-links');
+      let state=nav.style.display;
+      if (state === 'flex') {
+                nav.style.display = 'none';
+            } else {
+               nav.style.display = 'flex';
+            }
+     
+    },
+  },
 };
 </script>
+
+
+
 
 <style scoped>
 .navbar {
@@ -106,5 +132,92 @@ export default {
   background-image: linear-gradient(to bottom, #e0aa5a, #f5b55a);
   text-decoration: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-logo {
+    margin: 10px 0;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 4px 0;
+    background-color: #333;
+  }
+
+  .show-menu .navbar-links {
+    display: flex;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-company-name {
+  font-size: 24px;
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar-links {
+    display: flex !important;
+    margin: auto !important;
+  }
+}
+
+
 
 </style>
