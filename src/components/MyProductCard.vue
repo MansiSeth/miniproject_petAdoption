@@ -9,9 +9,9 @@
         <p class="product-price">{{ jsonproduct.p_price }}</p>
         <p class="product-description">{{ jsonproduct.p_desc }}</p>
         <div class="product-quantity">
-          <button @click="incrementQuantity" class="quantity-btn">+</button>
+          <button @click="decrementQuantity" class="quantity-btn-subs">-</button>
           <span class="quantity">{{ quantity }}</span>
-          <button @click="decrementQuantity" class="quantity-btn">-</button>
+          <button @click="incrementQuantity" class="quantity-btn-add">+</button>
         </div>
         <div class="add-to-cart">
           <button class="standardButton" @click="addtoCart(jsonproduct)">Add to Cart</button>
@@ -59,6 +59,9 @@ export default {
   },
 };
 </script>
+
+
+
 <style scoped>
 
 .inventory-card {
@@ -78,20 +81,26 @@ export default {
 .product-quantity{
   display: flex;
   background-color: azure;
-  width:80px;
+  width:70px;
   height:30px;
   align-items: center;
   margin-top:10px;
   margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   
 
 }
-.quantity-btn{
+.quantity-btn-subs{
   background-color:#FFBD59;
-  width:40px;
+  width:30px;
   height:30px;
-  border-radius: 10px;
+  border-radius: 30px 10px 30px 30px;
+}
+.quantity-btn-add{
+  background-color:#FFBD59;
+  width:30px;
+  height:30px;
+  border-radius: 30px 30px 30px 10px;
 }
 .product-image {
   width: 300px;
