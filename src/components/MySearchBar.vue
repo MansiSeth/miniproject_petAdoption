@@ -9,7 +9,9 @@
     
         <div class="search-bar">
 
-        <v-text-field class="search-bar" solo label="Search" append-icon="mdi-magnify"  v-model="searchText" @input="$emit('search',$event)"></v-text-field>
+        <v-text-field class="search-bar" solo label="Search" append-icon="mdi-magnify"  v-model="searchText" @input="$emit('search',$event)"></v-text-field> 
+
+        <!-- Search bar component will input user's text and pass it to the page its being imported to, parent using emit into the '@search'-->
 
         </div>
 
