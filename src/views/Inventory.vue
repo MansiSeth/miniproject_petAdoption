@@ -2,42 +2,50 @@
   <div class="inventory-page">
     <h2 class="page-title">My<span class="yellow-text">Store</span></h2>
 
+    <my-search-bar
+      @search="searchInInventory($event, searchText)"
+    ></my-search-bar>
+    <!-- here @search cathches whatever user input into the searchbar component and passes to searchInInventory method-->
+
     <div class="inventory-list">
       <MyInventoryCard
         v-for="product in products"
         :key="product.p_id"
         :product="product"
       />
-       <button class="AddButton" @click="$router.push('/inventory/0')">+</button>
+      <button class="AddButton" @click="$router.push('/inventory/0')">+</button>
     </div>
-    
   </div>
 </template>
 
-
-
-
 <script>
+import MySearchBar from "@/components/MySearchBar.vue";
 import MyInventoryCard from "../components/MyInventoryCard.vue";
 import ProductsData from "../data/Inventory.json";
 
 export default {
   components: {
     MyInventoryCard,
+    MySearchBar,
   },
   data() {
     return {
       products: ProductsData,
-    }
+    };
+  },
+  methods: {
+    searchInInventory(searchText) {
+      if (searchText) {
+        this.products = this.products.filter((rec) =>
+          rec.p_name.toLowerCase().includes(searchText.toLowerCase())
+        );
+      } else {
+        this.products = ProductsData;
+      }
+    },
   },
 };
 </script>
-
-
-
-
-
-
 
 <style>
 .inventory-page {
@@ -62,14 +70,13 @@ export default {
   color: rgba(255, 189, 89, 1);
 }
 .AddButton {
-    background-color:#ffe7c2;
-    border-radius: 30px;
-    width: 300px;
-    height: 425px;
-    font-size: 24px;
-    margin-top: 20px;
-    font-size:50px ;
-    border: 2px solid;
-    
-  }
+  background-color: #ffe7c2;
+  border-radius: 30px;
+  width: 300px;
+  height: 425px;
+  font-size: 24px;
+  margin-top: 20px;
+  font-size: 50px;
+  border: 2px solid;
+}
 </style>
