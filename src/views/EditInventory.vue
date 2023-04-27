@@ -19,6 +19,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
 
@@ -50,13 +51,18 @@ export default {
         p_name: '',
         p_price: '',
         p_desc: '',
-        image: '' // Adjust the image field name in the default object
+        image: ''
       };
     },
     saveProduct() {
       if (this.id === '0') {
         // Create a new product
-        axios.post('http://192.168.1.6:3000/products', this.product)
+        const newProduct = { ...this.product, p_id: this.generateNewProductId() }; // Assign a new p_id
+        axios.post('http://192.168.1.6:3000/products', JSON.stringify(newProduct), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
           .then(response => {
             console.log(response.data);
             this.$router.push('/inventory');
@@ -66,7 +72,11 @@ export default {
           });
       } else {
         // Update an existing product
-        axios.put(`http://192.168.1.6:3000/products/${this.id}`, this.product)
+        axios.put(`http://192.168.1.6:3000/products/${this.id}`, JSON.stringify(this.product), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
           .then(response => {
             console.log(response.data);
             this.$router.push('/inventory');
@@ -75,12 +85,14 @@ export default {
             console.error(error);
           });
       }
+    },
+    generateNewProductId() {
+      const randomNumber = Math.floor(Math.random() * 9000) + 1000; // Generate a random number between 1000 and 9999
+      return randomNumber.toString();
     }
   }
 };
 </script>
-
-
 
 <style scoped>
 .center-container {
