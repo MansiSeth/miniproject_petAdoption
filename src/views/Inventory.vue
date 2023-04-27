@@ -18,8 +18,10 @@
 
 
 <script>
+import axios from 'axios';
 import MyInventoryCard from "../components/MyInventoryCard.vue";
-import ProductsData from "../data/Inventory.json";
+//import ProductsData from "../data/Inventory.json";
+
 
 export default {
   components: {
@@ -27,9 +29,19 @@ export default {
   },
   data() {
     return {
-      products: ProductsData,
+      products: [],
     }
   },
+  mounted() {
+  axios.get('http://192.168.1.6:3000/products')
+    .then(response => {
+      this.products = response.data;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
 };
 </script>
 
