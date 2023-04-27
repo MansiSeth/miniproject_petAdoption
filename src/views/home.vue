@@ -7,14 +7,14 @@
       <br>
       <br>
       <div class="centre">
-        <div>
+        <div class="content_container">
           <h1>Every animal deserves a Loving home. </h1>
-          <h1><span style="color:#FFBD59 ;">Adopt</span> a pet today</h1>
+          <h1><span style="color:#FFBD59 ;">Adopt</span> a pet today</h1><br>
           <p style="padding:10px 10px 10px 10px">
             Browse our available animals and learn more about the adoption process. Together, we can <strong>rescue, rehabilitate, and rehome pets in need. </strong>
           </p>
-          <p>
-            Thank you for supporting our mission to bring joy to families through pet adoption.
+          <p style="padding:10px 10px 10px 10px">
+            Thank you for supporting our mission to bring joy to families through pet adoption. We aim to build a return-proof adoption system that classifies Indian breeds properly and matches them to the right adopters and caters to every need of your new pet through our pet store where you can sell and buy pet products.
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@
   </script>
   
   <style>
-  #app
+ #app
   {
     margin-top: 60px;
   }
@@ -60,28 +60,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   }
-  .rounded-button 
-  {
+  .rounded-button {
   border-radius: 40px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  padding: 20px 30px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  background: #FFBD59;
-  width: 396px;
-  height: 68px;
-  left: 216px;
-  top: 348px;
-  font-size: larger;
+  padding: 4% 6%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #ffbd59;
+  width: 80%;
+  max-width: 396px;
+  font-size: 1.5em;
   color: black;
-  }
+}
+
   
-  .button-container {
+.button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  }
+  padding: 4% 0;
+  flex-wrap: wrap;
+}
+
   
   .rounded-button + .rounded-button {
   margin-left: 50px;
@@ -99,8 +100,15 @@
   flex-shrink: 0;
   height: 200px;
   }
+  .content_container {
+  text-align: center;
+  margin-left: 20% ;
+   margin-right: 20% ;
+}
   
   </style>
+  
+
   
   
   
