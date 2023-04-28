@@ -1,32 +1,25 @@
 <template>
     <div>
      
-      <div class="content">
-        <div class="website-content-website-content">
-          <span class="website-content-text">
+       <div class="centre">
+        <div class="content_container">
+          <span class="page-title">
             <span class="website-content-text1">
               Spoil your furry friend with  
-              <span v-html="rawpdwq"></span>
             </span>
             <span class="website-content-text2">Gifts of Love</span>
             <span>....and chicken</span>
           </span>
-          <span class="website-content-text4">
-            <span class="website-content-text5">
-              Looking for the best deals on pet products? Look no further! Our online
-              pet store has a wide selection of high-quality products for all your
-              furry friend&apos;s needs. From premium food to fun toys to grooming
-              essentials, we have it all at
-              <span v-html="rawi7zn"></span>
-            </span>
-            <span class="website-content-text6">unbeatable prices</span>
-            <span>
-              . Don&apos;t miss out on our great deals and shop now for your
-              pet&apos;s happiness and yours!
-            </span>
-          </span>
+      
+          <p style="padding:10px 10px 10px 10px">
+           Looking for the best deals on pet products? Look no further! Our online pet store has a wide selection of high-quality products for all your furry friend's needs. From premium food to fun toys to grooming essentials, we have it all at <b>unbeatable prices.</b> Don't miss out on our great deals and shop now for your pet's happiness and yours!
+          </p>
         </div>
-      </div>
+    </div><br>
+
+    
+        
+       
      <div class="search-bar">
       <my-search-bar @search="searchInProducts($event, searchText)"></my-search-bar>
       </div>
@@ -137,6 +130,12 @@ export default {
     justify-content: center;
     background-color: transparent;
   }
+  .content_container {
+  text-align: center;
+  margin-left: 10% ;
+   margin-right: 10% ;
+}
+
   
   .website-content-text {
     left: 38.201416015625px;
