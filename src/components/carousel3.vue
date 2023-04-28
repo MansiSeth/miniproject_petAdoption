@@ -18,10 +18,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Tom</h2>
-                                <p class="desc">Labrador</p>
+                                <h2 class="name">Sir Waggington</h2>
+                                <p class="desc">Labrador and Indie Mix</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>The dapper dog who wags his tail with utmost sophistication.</p>
                               </div>
                           </div>
                         </div>
@@ -37,10 +37,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Cookie</h2>
-                                <p class="desc">best</p>
+                                <h2 class="name">Bark Twain</h2>
+                                <p class="desc">Beagle</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>A literary pup with a witty bark and a love for classic literature.</p>
                               </div>
                           </div>
                         </div>
@@ -69,10 +69,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 3</h2>
+                                <h2 class="name">Sir Barksalot</h2>
                                 <p class="desc">best dog you can pet</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>The noblest barker of them all, always ready to defend your home with his loud voice.</p>
                               </div>
                           </div>
                         </div>
@@ -88,10 +88,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 4</h2>
+                                <h2 class="name">Droolius Caesar </h2>
                                 <p class="desc">best</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>A regal canine who rules over his domain with a slobbery tongue and a wagging tail.</p>
                               </div>
                           </div>
                         </div>
@@ -120,10 +120,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 5</h2>
+                                <h2 class="name">Amitabh Barkchan</h2>
                                 <p class="desc">best dog you can pet</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>With his deep bark and commanding presence, Amitabh Barkchan is a legendary figure in the doggie film industry, known for his powerful performances and iconic dialogues.</p>
                               </div>
                           </div>
                         </div>
@@ -139,10 +139,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 6</h2>
+                                <h2 class="name">Ranveer Woof</h2>
                                 <p class="desc">best</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>This charismatic and flamboyant dog knows how to steal the limelight</p>
                               </div>
                           </div>
                         </div>
@@ -171,10 +171,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 7</h2>
+                                <h2 class="name">Salman Kh-woof</h2>
                                 <p class="desc">best dog you can pet</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p> His heart as big as his Bollywood counterpart Salman Khan</p>
                               </div>
                           </div>
                         </div>
@@ -190,10 +190,10 @@
                                  </div>
                               </div>
                               <div class="card-content">
-                                <h2 class="name">Dog 8</h2>
+                                <h2 class="name">Poochendra</h2>
                                 <p class="desc">best</p>
                                 <br>
-                                <p>Lorem ipsum dolor sit amet.</p>
+                                <p>This dog has all the sass and drama of Bollywood's iconic character Poo from "Kabhi Khushi Kabhie Gham,"</p>
                               </div>
                           </div>
                         </div>
@@ -336,7 +336,8 @@ flex-direction: column;
 
 .card
 {
-width: 200px;
+width: 300px;
+height: 300px;
 border-radius: 25px;
 border-width: 2px;
 border-style: dashed;
@@ -355,6 +356,8 @@ display: flex;
 flex-direction: column;
 padding: 10px 14px;
 align-items: center;
+
+text-overflow: ellipsis;
 }
 .image-content
 {
