@@ -1,42 +1,26 @@
 <template>
   <div>
-    <div class="login-dummy-container">
-      <div class="login-website-content">
-        <span class="login-text">
-          <span class="login-text1">
-            Show some
-            <span v-html="raw89bl"></span>
-          </span>
-          <span class="login-text2">Love</span>
-          <span>to some four-legged furry angels</span>
-        </span>
-        <span class="login-text4">
-          <span>
-            Please consider making a donation to our pet adoption organization.
+
+  <div class="centre">
+        <div class="content_container">
+          <h1 class="page-title">Show some <span class="yellow-text">Love </span>to some four-legged furry angels</h1>
+
+        
+      
+          <p style="padding:10px 10px 10px 10px">
+           Please consider making a donation to our pet adoption organization.
             Your generosity will help us provide food, shelter, and medical care
             for abandoned and stray animals. With your support, we can give these
-            loving creatures a second chance at a happy, healthy life in a forever
-            home. Every dollar counts and will make a real difference in the lives
-            of these animals. Your donation is tax-deductible and greatly
-            appreciated. Thank you for your support!
-          </span>
-        </span>
-      </div>
-      <div class="login-group2996">
-        <div class="login-search">
-          <div class="login-search-field">
-            <div class="login-back-ground">
-              <img
-                src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f6497916-0e16-47c0-888a-52f2d9d68107/fe8d45dc-cab7-4556-aa7c-e5ac48dbfb44?org_if_sml=11684"
-                alt="Rectangle201168"
-                class="login-rectangle20"
-              />
-            </div>
-          </div>
+            loving creatures a second chance at a happy, healthy life in a forever home. Every dollar counts and will make a real difference in the lives of these animals. Your donation is tax-deductible and greatly appreciated. Thank you for your support!
+          </p>
         </div>
-        <button @click="gotocheckout" class="login-text6"><span>Donate Now</span></button>
-      </div>
-    </div>
+    </div><br>
+
+
+    <center><button class="donate-button" @click=gotocheckout>Donate</button></center>
+
+
+ 
   </div>
 </template>
 
@@ -51,13 +35,30 @@ export default {
   },
   methods: {
     gotocheckout() {
-    this.$router.push('/checkout')
+    this.$router.push('/cart')
     }
 }
 }
 </script>
 
 <style scoped>
+
+.donate-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightyellow;
+    border: 10px solid  rgba(255, 189, 89, 1);
+    color:  rgba(255, 189, 89, 1);
+    padding: 20px 30% 20px 30%;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
 .login-dummy-container {
   width: 100%;
   height: 900px;
