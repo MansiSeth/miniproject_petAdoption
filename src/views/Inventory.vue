@@ -1,6 +1,16 @@
 <template>
   <div class="inventory-page">
-    <h2 class="page-title">My<span class="yellow-text">Store</span></h2>
+    
+    <div class="centre">
+        <div class="content_container">
+          <h1 class="page-title">My<span class="yellow-text">Store</span></h1>
+      
+          <p style="padding:10px 10px 10px 10px">
+           Welcome to our pet products website's inventory page, your gateway to a world of premium supplies and delightful accessories for your beloved furry companions. Our inventory page showcases an extensive range of high-quality products designed to enhance the well-being and happiness of your pets. From nutritious food and tasty treats to comfortable beds and stylish apparel, we have everything you need to cater to their every need.<br>
+            As you explore the page, you'll find detailed descriptions and vibrant images that highlight the features and benefits of each item, making it easy for you to choose the perfect product for your pet. 
+          </p>
+        </div>
+    </div><br>
 
     <my-search-bar
       @search="searchInInventory($event, searchText)"
@@ -16,13 +26,14 @@
       <button class="AddButton" @click="$router.push('/inventory/0')">+</button>
     </div>
   </div>
+  
 </template>
 
 <script>
 import axios from 'axios';
 import MySearchBar from "@/components/MySearchBar.vue";
 import MyInventoryCard from "../components/MyInventoryCard.vue";
-//import ProductsData from "../data/Inventory.json";
+//import ProductsData from "../data/Inventory.json"; if json file was used to render data of cards
 
 
 export default {
@@ -47,6 +58,7 @@ export default {
     },
   },
   mounted() {
+    
   axios.get('http://192.168.1.6:3000/products')
     .then(response => {
       this.products = response.data;
@@ -64,6 +76,12 @@ export default {
   margin: 0 auto;
   padding: 20px;
 }
+ .content_container {
+  text-align: center;
+  margin-left: 10% ;
+   margin-right: 10% ;
+}
+
 
 .page-title {
   margin: 0 0 20px;
