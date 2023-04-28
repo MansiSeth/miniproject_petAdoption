@@ -19,9 +19,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 import MySearchBar from "@/components/MySearchBar.vue";
 import MyInventoryCard from "../components/MyInventoryCard.vue";
-import ProductsData from "../data/Inventory.json";
+//import ProductsData from "../data/Inventory.json";
+
 
 export default {
   components: {
@@ -30,7 +32,7 @@ export default {
   },
   data() {
     return {
-      products: ProductsData,
+      products: [],
     };
   },
   methods: {
@@ -44,6 +46,16 @@ export default {
       }
     },
   },
+  mounted() {
+  axios.get('http://192.168.1.6:3000/products')
+    .then(response => {
+      this.products = response.data;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
 };
 </script>
 

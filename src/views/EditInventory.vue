@@ -1,68 +1,97 @@
 <template>
-<div class="center-container">
-
+  <div class="center-container">
     <div class="form_details">
-        <h1>Product ID: {{id}}</h1>
-        <v-row>
-            <v-col >
-                <v-form>
-                    <v-text-field label="Product Name" counter="25" v-model="product.p_name"></v-text-field>
-                    <v-text-field label="Product Price" counter="10" v-model="product.p_price"></v-text-field>
-                    <v-textarea label="Product Description" counter="200" v-model="product.p_desc"></v-textarea>
-
-                </v-form>
-            </v-col>
-        </v-row>
-
-        <div class="buttons_bar">
-            <button class="standardButton">Save</button>
-            <button class="standardButton"  @click="$router.push('/inventory')">Cancel</button>
-        </div>
-
+      <h1>Product ID: {{ id }}</h1>
+      <v-row>
+        <v-col>
+          <v-form>
+            <v-text-field label="Product Name" counter="25" v-model="product.p_name"></v-text-field>
+            <v-text-field label="Product Price" counter="10" v-model="product.p_price"></v-text-field>
+            <v-textarea label="Product Description" counter="200" v-model="product.p_desc"></v-textarea>
+            <v-text-field label="Image URL" v-model="product.image"></v-text-field>
+          </v-form>
+        </v-col>
+      </v-row>
+      <div class="buttons_bar">
+        <button class="standardButton" @click="saveProduct">Save</button>
+        <button class="standardButton" @click="$router.push('/inventory')">Cancel</button>
+      </div>
     </div>
-
-</div>
+  </div>
 </template>
 
 <script>
-import productData from '@/data/Inventory.json';
+import axios from 'axios';
+
 export default {
-    data() {
-        return {
-            id: 0,
-            product: this.defaultObject()
-        }
-    },
-
-    mounted() {
-        this.init()
-        console.log("in mounted");
-
-    },
-
-    methods: {
-
-        init() {
-            this.id = this.$route.params.id
-            console.log("in init");
-
-            if (this.id != 0) {
-                console.log(this.product);
-                this.product = productData.find(rec => rec.p_id == this.id)
-
-            }
-        },
-        defaultObject() {
-            return {
-                code: "",
-                p_name: "",
-                p_price: "",
-                p_desc: "",
-            }
-        }
-
+  data() {
+    return {
+      id: 0,
+      product: this.defaultObject()
     }
-}
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.id = this.$route.params.id;
+      if (this.id !== '0') {
+        axios.get(`http://192.168.1.6:3000/products/${this.id}`)
+          .then(response => {
+            this.product = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+    },
+    defaultObject() {
+      return {
+        p_name: '',
+        p_price: '',
+        p_desc: '',
+        image: ''
+      };
+    },
+    saveProduct() {
+      if (this.id === '0') {
+        // Create a new product
+        const newProduct = { ...this.product, p_id: this.generateNewProductId() }; // Assign a new p_id
+        axios.post('http://192.168.1.6:3000/products', JSON.stringify(newProduct), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => {
+            console.log(response.data);
+            this.$router.push('/inventory');
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        // Update an existing product
+        axios.put(`http://192.168.1.6:3000/products/${this.id}`, JSON.stringify(this.product), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => {
+            console.log(response.data);
+            this.$router.push('/inventory');
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+    },
+    generateNewProductId() {
+      const randomNumber = Math.floor(Math.random() * 9000) + 1000; // Generate a random number between 1000 and 9999
+      return randomNumber.toString();
+    }
+  }
+};
 </script>
 
 <style scoped>
