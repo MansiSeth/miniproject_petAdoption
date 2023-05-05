@@ -3,24 +3,22 @@
     
         <div class="pawButton">
     
-            <img class="pawVector" src="@/assets/pawVector.png" alt="paw" />
+            <img class="pawButton" src="@/assets/pawVector.png" alt="paw" />
     
         </div>
     
         <div class="search-bar">
-    
-            <input type="text" placeholder="Search..." />
-    
+
+        <v-text-field class="search-bar" solo label="Search" append-icon="mdi-magnify"  v-model="searchText" @input="$emit('search',$event)"></v-text-field> 
+
+        <!-- Search bar component will input user's text and pass it to the page its being imported to, parent using emit into the '@search'-->
+
         </div>
-    
-        <div class="search-bar-input">
-    
-            <button type="submit" class="search-btn"><img src="@/assets/search.png"></button></div>
 
 
         <div>
     
-            <button type="submit" class="cart-btn"><img 
+            <button  @click="goToCart" class="cart-btn"><img 
             class="cart-vector" src="@/assets/cart.svg"></button></div>
     
     </div>
@@ -32,6 +30,7 @@ export default {
         return {
             searchTerm: "",
             name: "searchBar",
+            searchText: ''
         };
     },
     methods: {
@@ -39,9 +38,11 @@ export default {
             this.searchTerm = event.target.value;
         },
         search() {
-            // do something with the search term, such as make an API request
-            console.log("Searching for:", this.searchTerm);
+                this.$emit('search', this.searchText);
         },
+         goToCart() {
+    this.$router.push('/cart');
+  }
     },
 };
 </script>
@@ -56,31 +57,21 @@ export default {
   justify-content: center;
   box-shadow: inset 0 0 0 5px #FFBD59; /* add outer border */
 }
-
-
 .pawButton {
-    margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-.pawVector {
-    width: 30px;
-    border-radius: 30px;
+.search-bar{
+    width: 90%;
+    position: relative;
+    top: 5px;
+    left:30px;
+    border-radius:20px;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px 0px 0px 10px;
-    overflow: hidden;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-input[type="text"] {
-    border: none;
-    padding: 5px;
-    width: 200px;
-}
 
 
 .search-btn {
@@ -91,7 +82,7 @@ input[type="text"] {
     height:25px;
     outline: none;
     border-radius: 0px 15px 15px 0px;;
-}
+} 
 .search-btn:active {
       box-shadow: 0 0 5px rgba(0,0,0,0.5);
       border-radius:5pt;
@@ -113,9 +104,8 @@ input[type="text"] {
 
 
 .cart-btn{
-    
-    width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   background-color: transparent;
   outline: none;
   border: none; /* remove border */
@@ -125,10 +115,13 @@ input[type="text"] {
   justify-content: center; /* center align horizontally */
   align-items: center;
   cursor: pointer;
+    
+
 }
 .cart-vector{
-    width:20px;
-    height:20px;
+    width:60px;
+    height:60px;
+
 }
 .cart-btn :active{
     box-shadow: 0 0 5px rgba(0,0,0,0.5);

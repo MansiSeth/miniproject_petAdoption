@@ -11,10 +11,8 @@
     <p class="product-description">{{ product.p_desc }}</p>
 
     <div class="button_pos">
-      <button class="standardButton"
-        @click="
-          $router.push({ name: 'EditInventory', params: { id: product.p_id } })"
-      >Edit</button>
+     <button class="standardButton" @click="$router.push({ name: 'EditInventory', params: { id: product.p_id } })">Edit</button>
+
     </div>
   </div>
 </template>
@@ -31,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .inventory-card {
   display: flex;
   flex-direction: column;
